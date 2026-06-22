@@ -1,34 +1,142 @@
-# SKILLVERSE — Student Skill Exchange Platform
+<div align="center">
+  <br/>
+  <pre>
+  ╔══════════════════════════════════════════════════════╗
+  ║                                                      ║
+  ║   ███████╗██╗  ██╗██╗██╗     ██╗   ██╗███████╗     ║
+  ║   ██╔════╝██║ ██╔╝██║██║     ██║   ██║██╔════╝     ║
+  ║   ███████╗█████╔╝ ██║██║     ██║   ██║█████╗       ║
+  ║   ╚════██║██╔═██╗ ██║██║     ╚██╗ ██╔╝██╔══╝       ║
+  ║   ███████║██║  ██╗██║███████╗ ╚████╔╝ ███████╗     ║
+  ║   ╚══════╝╚═╝  ╚═╝╚═╝╚══════╝  ╚═══╝  ╚══════╝     ║
+  ║                                                      ║
+  ╚══════════════════════════════════════════════════════╝
+  </pre>
 
-![Version](https://img.shields.io/badge/Version-1.0.0-FFD028?style=for-the-badge&labelColor=000000&logo=semver)
-![Status](https://img.shields.io/badge/Status-Active-00AD6F?style=for-the-badge&labelColor=000000&logo=vercel)
-![Vite](https://img.shields.io/badge/Vite-5.4-646CFF?style=for-the-badge&labelColor=000000&logo=vite)
-![JavaScript](https://img.shields.io/badge/JavaScript-ES2024-F7DF1E?style=for-the-badge&labelColor=000000&logo=javascript)
-![HTML](https://img.shields.io/badge/HTML-5-E34F26?style=for-the-badge&labelColor=000000&logo=html5)
-![CSS](https://img.shields.io/badge/CSS-3-1572B6?style=for-the-badge&labelColor=000000&logo=css3)
-![Groq](https://img.shields.io/badge/Groq-API-FF6B6B?style=for-the-badge&labelColor=000000&logo=groq)
-![Lenis](https://img.shields.io/badge/Lenis-Smooth_Scroll-FFD028?style=for-the-badge&labelColor=000000)
-[![License](https://img.shields.io/badge/License-AC--DC-000000?style=for-the-badge&labelColor=FFD028&logo=openaccess)](LICENSE)
+  <h1 align="center">SKILLVERSE</h1>
+  <p align="center">
+    <strong>Student Skill Exchange Platform</strong>
+    <br/>
+    <em>Learn. Teach. Grow.</em>
+  </p>
+
+  <br/>
+
+  <p align="center">
+    <a href="#-features"><strong>Features</strong></a> •
+    <a href="#-tech-stack"><strong>Tech Stack</strong></a> •
+    <a href="#-architecture"><strong>Architecture</strong></a> •
+    <a href="#-quick-start"><strong>Quick Start</strong></a> •
+    <a href="#-screens"><strong>Screens</strong></a> •
+    <a href="#-contributors"><strong>Team</strong></a>
+  </p>
+
+  <br/>
+
+  <!-- BADGES -->
+  <p>
+    <img src="https://img.shields.io/badge/Version-1.0.0-FFD028?style=for-the-badge&labelColor=000000&logo=semver" alt="Version"/>
+    <img src="https://img.shields.io/badge/Status-Active-00AD6F?style=for-the-badge&labelColor=000000&logo=vercel" alt="Status"/>
+    <img src="https://img.shields.io/badge/Build-Passing-00AD6F?style=for-the-badge&labelColor=000000&logo=githubactions" alt="Build"/>
+    <img src="https://img.shields.io/badge/Vite-5.4-646CFF?style=for-the-badge&labelColor=000000&logo=vite" alt="Vite"/>
+    <img src="https://img.shields.io/badge/JavaScript-ES2024-F7DF1E?style=for-the-badge&labelColor=000000&logo=javascript" alt="JavaScript"/>
+    <img src="https://img.shields.io/badge/HTML-5-E34F26?style=for-the-badge&labelColor=000000&logo=html5" alt="HTML"/>
+    <img src="https://img.shields.io/badge/CSS-3-1572B6?style=for-the-badge&labelColor=000000&logo=css3" alt="CSS"/>
+    <img src="https://img.shields.io/badge/Groq-API-FF6B6B?style=for-the-badge&labelColor=000000&logo=groq" alt="Groq"/>
+    <img src="https://img.shields.io/badge/Lenis-Smooth_Scroll-FFD028?style=for-the-badge&labelColor=000000" alt="Lenis"/>
+    <img src="https://img.shields.io/badge/PRs-Welcome-8A2BE2?style=for-the-badge&labelColor=000000&logo=github" alt="PRs Welcome"/>
+    <a href="LICENSE"><img src="https://img.shields.io/badge/License-AC--DC-000000?style=for-the-badge&labelColor=FFD028&logo=openaccess" alt="License"/></a>
+  </p>
+
+  <br/>
+</div>
 
 ---
 
-> **Note for Evaluators:**  
-> This project — **SKILLVERSE** — is a student skill exchange platform built as part of the academic curriculum. It features a **neobrutalist design system**, a **modular Vite + vanilla JS architecture**, and **10 interactive screens** that simulate the complete user journey — from login to live chat. The platform demonstrates reactive state management, component-based routing, an AI chatbot assistant (Groq API), and a real-time waiting room simulator. We encourage you to explore the full flow: *Login → Home → Matches → Proposal → Status → Chats → Profile*.
+## 📋 Overview
 
----
+**SKILLVERSE** is a sophisticated **student-to-student skill exchange platform** that reimagines peer learning through a neobrutalist lens. Built with **vanilla JavaScript**, **Vite 5**, and a custom **reactive state management** system, the platform delivers a seamless single-page application experience across **10 interactive screens** — from authentication to live chat.
 
-## Team AC-DC
+> 🎓 **Academic Project** — Developed by Team **AC-DC** as part of the VIT Bhopal University curriculum. This project demonstrates advanced frontend engineering patterns including component-based SPA routing, reactive state proxies, real-time AI integration, and a modular CSS design system.
 
-| Role | Name |
+### ✨ Why SKILLVERSE?
+
+| | |
 |---|---|
-| **Developer** | **Rachit Tiwari** |
-| **Developer** | **Mausam Kar** |
-| **Developer** | **Shaikh Mohammad Warsi** |
-| **Developer** | **Jiya Jaiswal** |
+| **🎯 Peer-to-Peer Learning** | Connect students with complementary skills for knowledge exchange |
+| **🤖 AI-Powered Assistance** | Integrated Groq AI chatbot (Llama 3.1) provides intelligent guidance |
+| **🎨 Neobrutalist Design** | A bold, distinctive visual identity that stands out from conventional UIs |
+| **⚡ Reactive Architecture** | Custom Proxy-based state management without any frameworks |
+| **📱 Full User Journey** | 10 interconnected screens covering the complete skill exchange lifecycle |
 
 ---
 
-## Architecture Overview
+## 📑 Table of Contents
+
+- [Features](#-features)
+- [Tech Stack](#-tech-stack)
+- [Architecture](#-architecture)
+- [Quick Start](#-quick-start)
+- [Screens Walkthrough](#-screens-walkthrough)
+- [Project Structure](#-project-structure)
+- [Contributors](#-contributors)
+- [Development Timeline](#-development-timeline)
+- [License](#-license)
+
+---
+
+## 🚀 Features
+
+### Core Screens
+
+| # | Screen | Description |
+|:---:|---|---|
+| 1 | **Login** | Student email/password sign-in with Google Auth simulation |
+| 2 | **Home Dashboard** | Welcome banner, stats grid, upcoming sessions, quick actions |
+| 3 | **Waiting Room** | Pre-call lobby with countdown timer, camera/mic toggles, video simulation |
+| 4 | **Student Profile** | Avatar, rating, streak, teach/learn badges |
+| 5 | **Edit Profile** | Display name, bio, department, notification/match preferences, log out |
+| 6 | **Match Engine** | AI-powered peer cards with department filters, like/dismiss, match percentage |
+| 7 | **Exchange Proposal** | Skill swap summary, duration/format selectors |
+| 8 | **Success Status** | Confirmation screen with navigation to chat or home |
+| 9 | **Chats Directory** | Searchable list of active conversations |
+| 10 | **Live Chatroom** | Real-time messaging interface with send/enter support |
+
+### 🧩 Additional Components
+
+| Component | Description |
+|---|---|
+| **AI Chatbot** | 🤖 Floating assistant powered by **Groq API** (Llama 3.1 8B) — context-aware, real-time responses |
+| **Theme Toggle** | 🌗 Seamless light/dark mode switching with persistent preference |
+| **State Debugger** | 🔍 Live reactive JSON state viewer for development inspection |
+| **Color Sandbox** | 🎨 Real-time neobrutalist color token editor — tweak variables, see changes instantly |
+| **Activity Log** | 📋 Console-style event stream recording all application interactions |
+
+---
+
+## 🛠️ Tech Stack
+
+<div align="center">
+
+| Layer | Technology | Purpose |
+|:---|---:|---:|
+| **Build Tool** | ![Vite](https://img.shields.io/badge/Vite-5.4-646CFF?logo=vite) | Lightning-fast HMR, optimized production builds |
+| **Language** | ![JavaScript](https://img.shields.io/badge/ES2024-F7DF1E?logo=javascript) | Vanilla JS with ES modules — zero framework overhead |
+| **Markup** | ![HTML](https://img.shields.io/badge/HTML_5-E34F26?logo=html5) | Component templates loaded via `?raw` Vite imports |
+| **Styling** | ![CSS](https://img.shields.io/badge/CSS_3_Custom_Properties-1572B6?logo=css3) | Neobrutalist design system with CSS custom properties |
+| **Smooth Scroll** | ![Lenis](https://img.shields.io/badge/Lenis-FFD028) | Butter-smooth scroll physics |
+| **AI Integration** | ![Groq](https://img.shields.io/badge/Groq-API-FF6B6B?logo=groq) | Llama 3.1 8B via Groq's ultra-fast inference |
+| **State Management** | — | Custom reactive `Proxy`-based store with change logging |
+| **Router** | — | Custom hash-based SPA router with dynamic component injection |
+| **Fonts** | — | **Outfit** (headers), **Inter** (body) — loaded from Google Fonts |
+
+</div>
+
+---
+
+## 🏗️ Architecture
+
+### System Architecture
 
 ```mermaid
 graph TB
@@ -99,7 +207,7 @@ flowchart LR
     G -.->|"User interacts again"| A
 ```
 
-### User Journey Flow
+### User Journey
 
 ```mermaid
 stateDiagram-v2
@@ -132,9 +240,62 @@ stateDiagram-v2
 
 ---
 
-## Flowcharts
+## ⚡ Quick Start
 
-### Match Engine Workflow
+### Prerequisites
+
+- **Node.js** 18+ (LTS recommended)
+- **npm** 9+ (ships with Node.js)
+
+### Setup in 30 Seconds
+
+```bash
+# 1. Clone the repository
+git clone https://github.com/Rachit-Tiwari-7/SKILLVERSE.git
+
+# 2. Navigate to project
+cd SKILLVERSE
+
+# 3. Install dependencies
+npm install
+
+# 4. (Optional) Set Groq API key for AI chatbot features
+echo "VITE_GROQ_API_KEY=your_groq_api_key" > .env
+
+# 5. Start development server
+npm run dev
+```
+
+Your browser will open at **👉 [http://localhost:5173](http://localhost:5173)**
+
+### Production Build
+
+```bash
+npm run build    # outputs optimized bundle to /dist
+npm run preview  # preview production build locally
+```
+
+---
+
+## 🎬 Screens Walkthrough
+
+| Screen | Key Interactions |
+|---|---|
+| **🔐 Login** | Enter credentials or click "Sign In with Google" to access the dashboard |
+| **🏠 Home** | View stats, join upcoming session, quick-nav to Matches/Chats/Profile |
+| **⏳ Waiting Room** | Toggle mic/camera, watch countdown, click "Join Session" |
+| **👤 Profile** | View rating, streak, skills; click EDIT to modify |
+| **✏️ Edit Profile** | Update name/bio/dept, toggle notifications, log out |
+| **💞 Matches** | Filter by department, like/dismiss cards, propose exchange |
+| **📝 Proposal** | Review skill swap, select duration & format, send request |
+| **✅ Status** | Success confirmation; navigate to chat or back to home |
+| **💬 Messages** | Search conversations, select a chat to open |
+| **💭 Chatroom** | Send messages, receive auto-replies from simulated peer |
+
+### Workflow Diagrams
+
+<details>
+<summary><strong>🔽 Click to expand: Match Engine Workflow</strong></summary>
 
 ```mermaid
 flowchart TD
@@ -159,8 +320,10 @@ flowchart TD
     REMAIN -->|Yes| ACTION
     REMAIN -->|No| EMPTY["No more matches<br/>notification"]
 ```
+</details>
 
-### AI Chatbot Request Flow
+<details>
+<summary><strong>🔽 Click to expand: AI Chatbot Request Flow</strong></summary>
 
 ```mermaid
 sequenceDiagram
@@ -178,192 +341,70 @@ sequenceDiagram
     UI-->>User: Display AI response
     Note over Handler,Groq: System prompt provides<br/>Skillverse context
 ```
+</details>
 
 ---
 
-## Features
-
-| # | Screen | Description |
-|---|---|---|
-| 1 | **Login** | Student email/password sign-in with Google Auth simulation |
-| 2 | **Home Dashboard** | Welcome banner, stats grid, upcoming sessions, quick actions |
-| 3 | **Waiting Room** | Pre-call lobby with countdown timer, camera/mic toggles, video simulation |
-| 4 | **Student Profile** | Avatar, rating, streak, teach/learn badges |
-| 5 | **Edit Profile** | Display name, bio, department, notification/match preferences, log out |
-| 6 | **Match Engine** | AI-powered peer cards with department filters, like/dismiss, match percentage |
-| 7 | **Exchange Proposal** | Skill swap summary, duration/format selectors |
-| 8 | **Success Status** | Confirmation screen with navigation to chat or home |
-| 9 | **Chats Directory** | Searchable list of active conversations |
-| 10 | **Live Chatroom** | Real-time messaging interface with send/enter support |
-
-### Additional Components
-
-| Component | Description |
-|---|---|
-| **AI Chatbot** | Floating assistant powered by Groq API (Llama 3.1 8B) |
-| **Theme Toggle** | Light/Dark mode switcher |
-| **State Debugger** | Live reactive JSON state viewer |
-| **Color Sandbox** | Real-time neobrutalist color token editor |
-| **Activity Log** | Console-style event stream |
-
----
-
-## Tech Stack
-
-| Layer | Technology |
-|---|---|
-| **Build Tool** | Vite 5 |
-| **Language** | Vanilla JavaScript (ES Modules) |
-| **Markup** | HTML (component strings via `?raw` import) |
-| **Styling** | CSS with Custom Properties (neobrutalist design system) |
-| **Smooth Scroll** | Lenis |
-| **AI Integration** | Groq API (Llama 3.1 8B) |
-| **State Management** | Reactive Proxy (custom) |
-| **Router** | Custom hash-based SPA router |
-| **Fonts** | Outfit (headers), Inter (body) |
-
----
-
-## Project Structure
+## 📁 Project Structure
 
 ```
 SKILLVERSE/
-├── index.html                 # Entry point with global header, nav, AI widget
-├── package.json               # Vite + Lenis dependencies
-├── package-lock.json
-├── .gitignore
-├── .env                       # (create this) VITE_GROQ_API_KEY=your_key
-├── README.md
-└── src/
-    ├── main.js                # App bootstrapper, event bindings, Lenis init
-    ├── state.js               # Reactive state proxy with logging
-    ├── router.js              # SPA navigation, screen switching, chat rendering
-    ├── chatbot.js             # Chat message send/receive logic
-    ├── timer.js               # Waiting room countdown timer
-    ├── ai-assistant.js        # Groq API integration for AI chatbot
-    ├── components/            # Screen templates (.html loaded as raw strings)
-    │   ├── login.html
-    │   ├── home.html
-    │   ├── waiting-room.html
-    │   ├── profile.html
-    │   ├── edit-profile.html
-    │   ├── matches.html
-    │   ├── proposal.html
-    │   ├── status.html
-    │   ├── messages.html
-    │   └── chat.html
-    └── styles/                # Modular CSS files
-        ├── variables.css
-        ├── main.css
-        ├── header.css
-        ├── login.css
-        ├── home.css
-        ├── waiting-room.css
-        ├── profile.css
-        ├── edit-profile.css
-        ├── matches.css
-        ├── proposal.css
-        ├── status.css
-        ├── chat.css
-        └── ai-chatbot.css
+├── 📄 index.html                 # Entry point — global header, nav, AI widget
+├── 📄 package.json               # Vite + Lenis dependencies
+├── 📄 package-lock.json
+├── 📄 .gitignore
+├── 📄 .env                       # (create this) VITE_GROQ_API_KEY=your_key
+├── 📄 README.md
+└── 📂 src/
+    ├── 📄 main.js                # App bootstrapper, event bindings, Lenis init
+    ├── 📄 state.js               # Reactive state proxy with logging
+    ├── 📄 router.js              # SPA navigation, screen switching, chat rendering
+    ├── 📄 chatbot.js             # Chat message send/receive logic
+    ├── 📄 timer.js               # Waiting room countdown timer
+    ├── 📄 ai-assistant.js        # Groq API integration for AI chatbot
+    ├── 📂 components/            # Screen templates (.html as raw strings)
+    │   ├── 📄 login.html
+    │   ├── 📄 home.html
+    │   ├── 📄 waiting-room.html
+    │   ├── 📄 profile.html
+    │   ├── 📄 edit-profile.html
+    │   ├── 📄 matches.html
+    │   ├── 📄 proposal.html
+    │   ├── 📄 status.html
+    │   ├── 📄 messages.html
+    │   └── 📄 chat.html
+    └── 📂 styles/                # Modular CSS files
+        ├── 📄 variables.css
+        ├── 📄 main.css
+        ├── 📄 header.css
+        ├── 📄 login.css
+        ├── 📄 home.css
+        ├── 📄 waiting-room.css
+        ├── 📄 profile.css
+        ├── 📄 edit-profile.css
+        ├── 📄 matches.css
+        ├── 📄 proposal.css
+        ├── 📄 status.css
+        ├── 📄 chat.css
+        └── 📄 ai-chatbot.css
 ```
 
 ---
 
-## Setup & Run
+## 👥 Contributors
 
-### Prerequisites
+### Team AC-DC
 
-- Node.js 18+
-- npm 9+
+<div align="center">
 
-### Installation
+| | Name | Role | Contributions |
+|:---:|---|---|---|
+| **👤** | **Rachit Tiwari** | Lead Developer | Architecture, State Management, Router, Chat System, AI Integration |
+| **👤** | **Mausam Kar** | Frontend Developer | Component Screens, CSS Design System, Match Engine, Timer |
+| **👤** | **Shaikh Mohammad Warsi** | UI/UX Developer | Login, Profile, Edit Profile, Proposal, Status Screens |
+| **👤** | **Jiya Jaiswal** | Frontend Developer | Home Dashboard, Messages, Waiting Room, Responsive Layout |
 
-```bash
-# Clone the repository
-git clone https://github.com/Rachit-Tiwari-7/SKILLVERSE.git
-cd SKILLVERSE
-
-# Install dependencies
-npm install
-
-# (Optional) Set Groq API key for AI chatbot
-echo "VITE_GROQ_API_KEY=your_groq_api_key" > .env
-
-# Start development server
-npm run dev
-```
-
-The app will be available at **http://localhost:5173**
-
-### Build for Production
-
-```bash
-npm run build    # outputs to /dist
-npm run preview  # preview production build
-```
-
----
-
-## Screens Walkthrough
-
-| Screen | Key Interactions |
-|---|---|
-| **Login** | Enter credentials or click "Sign In with Google" to access the dashboard |
-| **Home** | View stats, join upcoming session, quick-nav to Matches/Chats/Profile |
-| **Waiting Room** | Toggle mic/camera, watch countdown, click "Join Session" |
-| **Profile** | View rating, streak, skills; click EDIT to modify |
-| **Edit Profile** | Update name/bio/dept, toggle notifications, log out |
-| **Matches** | Filter by department, like/dismiss cards, propose exchange |
-| **Proposal** | Review skill swap, select duration & format, send request |
-| **Status** | Success confirmation; navigate to chat or back to home |
-| **Messages** | Search conversations, select a chat to open |
-| **Chatroom** | Send messages, receive auto-replies from simulated peer |
-
----
-
-## Contributing
-
-### Development Timeline
-
-```mermaid
-gantt
-    title SKILLVERSE Development Timeline
-    dateFormat  YYYY-MM-DD
-    axisFormat  %b %d
-
-    section Planning
-    UI/UX Mockups & PDF Design      :done, 2026-05-20, 5d
-    Architecture Planning           :done, 2026-05-24, 3d
-
-    section Frontend
-    Vite + Project Scaffold         :done, 2026-05-27, 2d
-    Component Screens (10 views)    :done, 2026-05-29, 5d
-    CSS Neobrutalist Design System  :done, 2026-06-02, 3d
-    Reactive State Management       :done, 2026-06-05, 2d
-    SPA Router Implementation       :done, 2026-06-07, 2d
-
-    section Features
-    Match Engine & Filters          :done, 2026-06-09, 3d
-    Waiting Room Timer & Controls   :done, 2026-06-11, 2d
-    Chat System & Messaging         :done, 2026-06-13, 3d
-    AI Chatbot (Groq Integration)   :done, 2026-06-16, 3d
-    Theme Toggle & Color Sandbox    :done, 2026-06-19, 2d
-
-    section Polish
-    Responsive Layout & Navigation  :done, 2026-06-21, 2d
-    README & Documentation          :done, 2026-06-22, 1d
-    Final Review & Submission       :done, 2026-06-22, 1d
-```
-
-### Contributors
-
-| Avatar | Name | Role | Contributions |
-|---|---|---|---|
-| 👤 | **Rachit Tiwari** | Lead Developer | Architecture, State Management, Router, Chat System, AI Integration |
-| 👤 | **Mausam Kar** | Frontend Developer | Component Screens, CSS Design System, Match Engine, Timer |
-| 👤 | **Shaikh Mohammad Warsi** | UI/UX Developer | Login, Profile, Edit Profile, Proposal, Status Screens |
-| 👤 | **Jiya Jaiswal** | Frontend Developer | Home Dashboard, Messages, Waiting Room, Responsive Layout |
+</div>
 
 ### Contribution Graph
 
@@ -397,12 +438,56 @@ gitGraph
 
 ---
 
-## License
+## 📅 Development Timeline — 48‑Hour Hackathon Sprint
 
-This project is licensed under the **AC-DC Academic License**. See the [LICENSE](LICENSE) file for details.
+> Built from scratch in a 2‑day sprint (June 22–23, 2026). Every task below was planned, implemented, and polished within this window.
 
-*Team AC-DC — VIT Bhopal University*
+```mermaid
+gantt
+    title SKILLVERSE — 48‑Hour Sprint
+    dateFormat  YYYY-MM-DD
+    axisFormat  %b %d %a
+
+    section Day 1 — Foundation
+    Project Scaffold & Vite Setup         :done, 2026-06-22, 4h
+    Reactive State Proxy & Router         :done, 2026-06-22, 3h
+    Neobrutalist Design System (CSS vars) :done, 2026-06-22, 2h
+    Core Screens (Login, Home, Profile)   :done, 2026-06-22, 4h
+    Match Engine & Proposal Flow          :done, 2026-06-22, 3h
+    Waiting Room & Timer                  :done, 2026-06-22, 2h
+
+    section Day 2 — Features & Polish
+    Chat System & Messages                :done, 2026-06-23, 3h
+    AI Chatbot (Groq Integration)         :done, 2026-06-23, 3h
+    Theme Toggle & Color Sandbox          :done, 2026-06-23, 2h
+    Remaining Screens (Status, Edit)      :done, 2026-06-23, 2h
+    Responsive Layout & Navigation        :done, 2026-06-23, 2h
+    README, Docs & Final Review           :done, 2026-06-23, 2h
+```
 
 ---
 
-<p align="center">SKILLVERSE &bull; Learn. Teach. Grow.</p>
+## 📄 License
+
+This project is licensed under the **AC-DC Academic License**. See the [LICENSE](LICENSE) file for details.
+
+---
+
+## 🙌 Support
+
+- **Report Issues**: [GitHub Issues](https://github.com/Rachit-Tiwari-7/SKILLVERSE/issues)
+- **Contribute**: Fork the repo and submit a PR — all contributions welcome!
+- **Contact**: Reach out to any of the team members above
+
+---
+
+<div align="center">
+  <sub>
+    Built with ❤️ by <strong>Team AC-DC</strong> — VIT Bhopal University
+  </sub>
+  <br/>
+  <br/>
+  <sub>
+    <strong>SKILLVERSE</strong> &bull; <em>Learn. Teach. Grow.</em>
+  </sub>
+</div>
