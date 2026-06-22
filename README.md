@@ -31,6 +31,9 @@
     <img src="https://img.shields.io/badge/CSS-3-1572B6?style=for-the-badge&labelColor=000000&logo=css3" alt="CSS"/>
     <img src="https://img.shields.io/badge/Groq-API-FF6B6B?style=for-the-badge&labelColor=000000&logo=groq" alt="Groq"/>
     <img src="https://img.shields.io/badge/Lenis-Smooth_Scroll-FFD028?style=for-the-badge&labelColor=000000" alt="Lenis"/>
+    <img src="https://img.shields.io/badge/Express-4.21-000000?style=for-the-badge&labelColor=000000&logo=express" alt="Express"/>
+    <img src="https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&labelColor=000000&logo=mongodb" alt="MongoDB"/>
+    <img src="https://img.shields.io/badge/WebSocket-8.18-000000?style=for-the-badge&labelColor=000000&logo=socket.io" alt="WebSocket"/>
     <img src="https://img.shields.io/badge/PRs-Welcome-8A2BE2?style=for-the-badge&labelColor=000000&logo=github" alt="PRs Welcome"/>
     <a href="LICENSE"><img src="https://img.shields.io/badge/License-AC--DC-000000?style=for-the-badge&labelColor=FFD028&logo=openaccess" alt="License"/></a>
   </p>
@@ -115,6 +118,10 @@
 | **AI Integration** | ![Groq](https://img.shields.io/badge/Groq-API-FF6B6B?logo=groq) | Llama 3.1 8B via Groq's ultra-fast inference |
 | **State Management** | — | Custom reactive `Proxy`-based store with change logging |
 | **Router** | — | Custom hash-based SPA router with dynamic component injection |
+| **Backend** | ![Node.js](https://img.shields.io/badge/Node.js-20-339933?logo=node.js) | Express REST API + WebSocket server |
+| **Database** | ![MongoDB](https://img.shields.io/badge/MongoDB-47A248?logo=mongodb) | Mongoose ODM — User, Skill, Match, Message, Proposal models |
+| **WebSocket** | ![ws](https://img.shields.io/badge/ws-8.18-000000) | Real-time messaging, typing indicators, presence, match updates |
+| **Auth** | ![JWT](https://img.shields.io/badge/JWT-000000?logo=jsonwebtokens) | Bearer token auth with bcrypt password hashing |
 | **Fonts** | — | **Outfit** (headers), **Inter** (body) — loaded from Google Fonts |
 
 </div>
@@ -243,17 +250,36 @@ git clone https://github.com/Rachit-Tiwari-7/SKILLVERSE.git
 # 2. Navigate to project
 cd SKILLVERSE
 
-# 3. Install dependencies
+# 3. Install frontend dependencies
 npm install
 
 # 4. (Optional) Set Groq API key for AI chatbot features
 echo "VITE_GROQ_API_KEY=your_groq_api_key" > .env
 
-# 5. Start development server
+# 5. Start frontend dev server
 npm run dev
 ```
 
 Your browser will open at **👉 [http://localhost:5173](http://localhost:5173)**
+
+### Backend Setup
+
+```bash
+# 1. Navigate to backend
+cd backend
+
+# 2. Install backend dependencies
+npm install
+
+# 3. Configure environment
+copy .env.example .env   # Windows
+# cp .env.example .env   # Linux/Mac
+
+# 4. Start backend server
+npm run dev
+```
+
+The API will be available at **👉 [http://localhost:3000](http://localhost:3000)** and WebSocket at `ws://localhost:3000/ws`.
 
 ### Production Build
 
@@ -342,38 +368,74 @@ SKILLVERSE/
 ├── 📄 .gitignore
 ├── 📄 .env                       # (create this) VITE_GROQ_API_KEY=your_key
 ├── 📄 README.md
-└── 📂 src/
-    ├── 📄 main.js                # App bootstrapper, event bindings, Lenis init
-    ├── 📄 state.js               # Reactive state proxy with logging
-    ├── 📄 router.js              # SPA navigation, screen switching, chat rendering
-    ├── 📄 chatbot.js             # Chat message send/receive logic
-    ├── 📄 timer.js               # Waiting room countdown timer
-    ├── 📄 ai-assistant.js        # Groq API integration for AI chatbot
-    ├── 📂 components/            # Screen templates (.html as raw strings)
-    │   ├── 📄 login.html
-    │   ├── 📄 home.html
-    │   ├── 📄 waiting-room.html
-    │   ├── 📄 profile.html
-    │   ├── 📄 edit-profile.html
-    │   ├── 📄 matches.html
-    │   ├── 📄 proposal.html
-    │   ├── 📄 status.html
-    │   ├── 📄 messages.html
-    │   └── 📄 chat.html
-    └── 📂 styles/                # Modular CSS files
-        ├── 📄 variables.css
-        ├── 📄 main.css
-        ├── 📄 header.css
-        ├── 📄 login.css
-        ├── 📄 home.css
-        ├── 📄 waiting-room.css
-        ├── 📄 profile.css
-        ├── 📄 edit-profile.css
-        ├── 📄 matches.css
-        ├── 📄 proposal.css
-        ├── 📄 status.css
-        ├── 📄 chat.css
-        └── 📄 ai-chatbot.css
+├── 📂 src/
+│   ├── 📄 main.js                # App bootstrapper, event bindings, Lenis init
+│   ├── 📄 state.js               # Reactive state proxy with logging
+│   ├── 📄 router.js              # SPA navigation, screen switching, chat rendering
+│   ├── 📄 chatbot.js             # Chat message send/receive logic
+│   ├── 📄 timer.js               # Waiting room countdown timer
+│   ├── 📄 ai-assistant.js        # Groq API integration for AI chatbot
+│   ├── 📂 components/            # Screen templates (.html as raw strings)
+│   │   ├── 📄 login.html
+│   │   ├── 📄 home.html
+│   │   ├── 📄 waiting-room.html
+│   │   ├── 📄 profile.html
+│   │   ├── 📄 edit-profile.html
+│   │   ├── 📄 matches.html
+│   │   ├── 📄 proposal.html
+│   │   ├── 📄 status.html
+│   │   ├── 📄 messages.html
+│   │   └── 📄 chat.html
+│   └── 📂 styles/                # Modular CSS files
+│       ├── 📄 variables.css
+│       ├── 📄 main.css
+│       ├── 📄 header.css
+│       ├── 📄 login.css
+│       ├── 📄 home.css
+│       ├── 📄 waiting-room.css
+│       ├── 📄 profile.css
+│       ├── 📄 edit-profile.css
+│       ├── 📄 matches.css
+│       ├── 📄 proposal.css
+│       ├── 📄 status.css
+│       ├── 📄 chat.css
+│       └── 📄 ai-chatbot.css
+└── 📂 backend/                   # Express + WebSocket API server
+    ├── 📄 server.js              # Entry point — Express + WebSocket server
+    ├── 📄 package.json           # Backend dependencies
+    ├── 📄 .env.example           # Environment variable template
+    ├── 📂 config/
+    │   ├── 📄 env.js             # Dotenv config loader
+    │   ├── 📄 db.js              # MongoDB connection
+    │   └── 📄 cors.js            # CORS settings
+    ├── 📂 controllers/           # Route handler logic
+    │   ├── 📄 auth.js
+    │   ├── 📄 users.js
+    │   ├── 📄 skills.js
+    │   ├── 📄 matches.js
+    │   ├── 📄 messages.js
+    │   └── 📄 proposals.js
+    ├── 📂 middleware/
+    │   ├── 📄 auth.js            # JWT verification
+    │   ├── 📄 error.js           # Global error handler
+    │   └── 📄 validate.js        # Body validation wrapper
+    ├── 📂 models/                # Mongoose schemas
+    │   ├── 📄 User.js
+    │   ├── 📄 Skill.js
+    │   ├── 📄 Match.js
+    │   ├── 📄 Message.js
+    │   └── 📄 Proposal.js
+    ├── 📂 routes/                # Express route definitions
+    │   ├── 📄 auth.js
+    │   ├── 📄 users.js
+    │   ├── 📄 skills.js
+    │   ├── 📄 matches.js
+    │   ├── 📄 messages.js
+    │   └── 📄 proposals.js
+    ├── 📂 utils/
+    │   └── 📄 ApiError.js        # Custom error class
+    └── 📂 websocket/
+        └── 📄 index.js           # WS handler — auth, messaging, typing, presence
 ```
 
 ---
