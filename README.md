@@ -26,44 +26,153 @@
 
 ## Architecture Overview
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│                    index.html  (Entry Point)                  │
-│          ┌───────────────────────────────────────┐            │
-│          │        src/main.js  (Bootstrapper)     │            │
-│          │  ┌──────────┐ ┌──────────┐ ┌────────┐ │            │
-│          │  │  state   │ │  router  │ │ timer  │ │            │
-│          │  │  .js     │ │  .js     │ │ .js    │ │            │
-│          │  └────┬─────┘ └────┬─────┘ └───┬────┘ │            │
-│          │       │            │            │       │            │
-│          │  ┌────▼────────────▼────────────▼────┐ │            │
-│          │  │       Components (HTML strings)    │ │            │
-│          │  │  login  home  waiting-room profile │ │            │
-│          │  │  edit-profile  matches  proposal   │ │            │
-│          │  │  status  messages  chat            │ │            │
-│          │  └────────────────────────────────────┘ │            │
-│          │  ┌──────────────────┐  ┌──────────────┐ │            │
-│          │  │  chatbot.js      │  │ai-assistant  │ │            │
-│          │  │  (Chat Logic)    │  │.js (Groq AI) │ │            │
-│          │  └──────────────────┘  └──────────────┘ │            │
-│          └───────────────────────────────────────┘             │
-│          ┌───────────────────────────────────────┐             │
-│          │          Styles (CSS Modules)          │             │
-│          │  variables  main  header  login  home  │             │
-│          │  waiting-room  profile  edit-profile   │             │
-│          │  matches  proposal  status  chat  AI   │             │
-│          └───────────────────────────────────────┘             │
-└─────────────────────────────────────────────────────────────┘
+```mermaid
+graph TB
+    subgraph Entry["Entry Point"]
+        HTML["index.html"]
+    end
+
+    subgraph Core["Core Modules (src/)"]
+        MAIN["main.js<br/>Bootstrapper"]
+        STATE["state.js<br/>Reactive Proxy"]
+        ROUTER["router.js<br/>SPA Router"]
+        TIMER["timer.js<br/>Countdown"]
+        CHAT["chatbot.js<br/>Chat Logic"]
+        AI["ai-assistant.js<br/>Groq AI"]
+    end
+
+    subgraph Components["Components (src/components/)"]
+        LOGIN["login.html"]
+        HOME["home.html"]
+        WAIT["waiting-room.html"]
+        PROF["profile.html"]
+        EDIT["edit-profile.html"]
+        MATCH["matches.html"]
+        PROP["proposal.html"]
+        STAT["status.html"]
+        MSGS["messages.html"]
+        CHATROOM["chat.html"]
+    end
+
+    subgraph Styles["Styles (src/styles/)"]
+        VAR["variables.css"]
+        MAIN_CSS["main.css"]
+        HEADER["header.css"]
+        LOGIN_CSS["login.css"]
+        HOME_CSS["home.css"]
+        WAIT_CSS["waiting-room.css"]
+        PROF_CSS["profile.css"]
+        EDIT_CSS["edit-profile.css"]
+        MATCH_CSS["matches.css"]
+        PROP_CSS["proposal.css"]
+        STAT_CSS["status.css"]
+        CHAT_CSS["chat.css"]
+        AI_CSS["ai-chatbot.css"]
+    end
+
+    HTML --> MAIN
+    MAIN --> STATE
+    MAIN --> ROUTER
+    MAIN --> TIMER
+    MAIN --> CHAT
+    MAIN --> AI
+    MAIN -.-> Components
+    MAIN -.-> Styles
+    STATE -.-> ROUTER
+    ROUTER -.-> Components
 ```
 
 ### Data Flow
 
+```mermaid
+flowchart LR
+    A["User Action<br/>(Click / Submit)"] --> B["Event Listener<br/>(main.js)"]
+    B --> C["state.js<br/>Reactive Proxy"]
+    C --> D["router.js<br/>navigate()"]
+    D --> E["Component HTML<br/>injected into DOM"]
+    E --> F["CSS Modules<br/>applied"]
+    F --> G["Screen Rendered"]
+    G -.->|"User interacts again"| A
 ```
-User Action → Event Listener → state.js (reactive proxy) → router.js (navigate)
-                                                    ↓
-                                        Component HTML injected into DOM
-                                                    ↓
-                                        Styles applied via CSS modules
+
+### User Journey Flow
+
+```mermaid
+stateDiagram-v2
+    [*] --> Login
+    Login --> Home: Authenticate
+    
+    Home --> WaitingRoom: Join Call
+    Home --> Matches: Find Peers
+    Home --> Profile: View Profile
+    Home --> Messages: Open Chats
+    
+    Matches --> Proposal: Propose Exchange
+    Proposal --> Status: Send Request
+    
+    Status --> Chatroom: Go to Chat
+    Status --> Home: Back to Home
+    
+    Profile --> EditProfile: Edit
+    
+    EditProfile --> Profile: Save
+    EditProfile --> Login: Log Out
+    
+    Messages --> Chatroom: Select Chat
+    
+    WaitingRoom --> Home: Back
+    Chatroom --> Messages: Back
+    
+    Login --> [*]
+```
+
+---
+
+## Flowcharts
+
+### Match Engine Workflow
+
+```mermaid
+flowchart TD
+    START(["User opens Matches"]) --> LOAD["Load peer cards from state"]
+    LOAD --> FILTER{Filter by<br/>Department?}
+    FILTER -->|All| SHOW_ALL["Show all cards"]
+    FILTER -->|CS Dept| SHOW_CS["Show CS cards only"]
+    FILTER -->|Design| SHOW_DES["Show Design cards only"]
+    FILTER -->|Business| SHOW_BUS["Show Business cards only"]
+    
+    SHOW_ALL --> ACTION{User Action}
+    SHOW_CS --> ACTION
+    SHOW_DES --> ACTION
+    SHOW_BUS --> ACTION
+    
+    ACTION -->|"Like (👍)"| LIKE["Animate like<br/>Remove card<br/>Update count"]
+    ACTION -->|"Dismiss (✕)"| DISMISS["Animate dismiss<br/>Remove card<br/>Update count"]
+    ACTION -->|"Propose Exchange"| PROPOSE["Navigate to<br/>Proposal Screen"]
+    
+    LIKE --> REMAIN{More cards?}
+    DISMISS --> REMAIN
+    REMAIN -->|Yes| ACTION
+    REMAIN -->|No| EMPTY["No more matches<br/>notification"]
+```
+
+### AI Chatbot Request Flow
+
+```mermaid
+sequenceDiagram
+    actor User
+    participant UI as Chat Widget
+    participant Handler as ai-assistant.js
+    participant Groq as Groq API
+    
+    User->>UI: Types message & clicks send
+    UI->>Handler: fetchGroqResponse(text)
+    Handler->>UI: Show typing indicator
+    Handler->>Groq: POST /chat/completions<br/>(llama-3.1-8b-instant)
+    Groq-->>Handler: Response with AI reply
+    Handler->>UI: Remove typing indicator
+    UI-->>User: Display AI response
+    Note over Handler,Groq: System prompt provides<br/>Skillverse context
 ```
 
 ---
