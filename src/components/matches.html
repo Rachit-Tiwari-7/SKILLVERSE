@@ -1,22 +1,30 @@
 <header class="app-header">
   <div class="app-logo">
-    <span>AI Matches</span>
+    <span>🤝 AI Matches</span>
   </div>
+  <span class="match-count-badge" id="match-count-badge">4 Matches</span>
 </header>
 
+<!-- Filter Bar -->
+<div class="match-filter-bar">
+  <button class="match-filter-btn active" data-filter="all" id="filter-all">All</button>
+  <button class="match-filter-btn" data-filter="CS">💻 CS</button>
+  <button class="match-filter-btn" data-filter="Design">🎨 Design</button>
+  <button class="match-filter-btn" data-filter="Business">📊 Business</button>
+</div>
+
 <div class="matches-screen">
-  <div class="match-list">
-    
+  <div class="match-list" id="match-list">
+
     <!-- Match Card 1: Alex Chen -->
-    <div class="match-card">
+    <div class="match-card" data-dept="CS">
       <div class="match-card-header">
         <div>
           <h3 class="match-name">Alex Chen</h3>
           <p class="match-dept">CS Dept • Year 3</p>
         </div>
-        <span class="match-percentage-badge">94%</span>
+        <span class="match-percentage-badge" data-pct="94">94%</span>
       </div>
-      
       <div class="offers-wants-grid">
         <div>
           <div class="offers-wants-title">Offers</div>
@@ -28,20 +36,25 @@
           <span class="neobrutal-badge yellow">UI/UX</span>
         </div>
       </div>
-      
-      <button type="button" id="matches-propose-btn" class="neobrutal-btn black">Propose Exchange</button>
+      <div class="match-card-pct-bar">
+        <div class="match-pct-fill" style="--bar-width: 94%;"></div>
+      </div>
+      <div class="match-card-actions">
+        <button type="button" class="match-action-btn dismiss" data-action="dismiss" title="Not Interested">✕</button>
+        <button type="button" id="matches-propose-btn" class="neobrutal-btn black" style="flex:1; margin:0;">Propose Exchange</button>
+        <button type="button" class="match-action-btn like" data-action="like" title="Interested">♥</button>
+      </div>
     </div>
-    
+
     <!-- Match Card 2: David Kim -->
-    <div class="match-card">
+    <div class="match-card" data-dept="Business">
       <div class="match-card-header">
         <div>
           <h3 class="match-name">David Kim</h3>
           <p class="match-dept">Business Dept • Year 2</p>
         </div>
-        <span class="match-percentage-badge">87%</span>
+        <span class="match-percentage-badge" data-pct="87">87%</span>
       </div>
-      
       <div class="offers-wants-grid">
         <div>
           <div class="offers-wants-title">Offers</div>
@@ -53,9 +66,75 @@
           <span class="neobrutal-badge yellow">Figma</span>
         </div>
       </div>
-      
-      <button type="button" class="neobrutal-btn black" style="opacity: 0.6; cursor: not-allowed;" disabled>Propose Exchange</button>
+      <div class="match-card-pct-bar">
+        <div class="match-pct-fill" style="--bar-width: 87%;"></div>
+      </div>
+      <div class="match-card-actions">
+        <button type="button" class="match-action-btn dismiss" data-action="dismiss" title="Not Interested">✕</button>
+        <button type="button" class="neobrutal-btn black" style="flex:1; margin:0;">Propose Exchange</button>
+        <button type="button" class="match-action-btn like" data-action="like" title="Interested">♥</button>
+      </div>
     </div>
-    
+
+    <!-- Match Card 3: Priya Sharma -->
+    <div class="match-card" data-dept="CS">
+      <div class="match-card-header">
+        <div>
+          <h3 class="match-name">Priya Sharma</h3>
+          <p class="match-dept">CS Dept • Year 4</p>
+        </div>
+        <span class="match-percentage-badge" data-pct="81">81%</span>
+      </div>
+      <div class="offers-wants-grid">
+        <div>
+          <div class="offers-wants-title">Offers</div>
+          <span class="neobrutal-badge">Python</span>
+          <span class="neobrutal-badge">ML Basics</span>
+        </div>
+        <div>
+          <div class="offers-wants-title">Wants</div>
+          <span class="neobrutal-badge yellow">Wireframing</span>
+        </div>
+      </div>
+      <div class="match-card-pct-bar">
+        <div class="match-pct-fill" style="--bar-width: 81%;"></div>
+      </div>
+      <div class="match-card-actions">
+        <button type="button" class="match-action-btn dismiss" data-action="dismiss" title="Not Interested">✕</button>
+        <button type="button" class="neobrutal-btn black" style="flex:1; margin:0;">Propose Exchange</button>
+        <button type="button" class="match-action-btn like" data-action="like" title="Interested">♥</button>
+      </div>
+    </div>
+
+    <!-- Match Card 4: Maya Patel -->
+    <div class="match-card" data-dept="Design">
+      <div class="match-card-header">
+        <div>
+          <h3 class="match-name">Maya Patel</h3>
+          <p class="match-dept">Design Dept • Year 3</p>
+        </div>
+        <span class="match-percentage-badge" data-pct="76">76%</span>
+      </div>
+      <div class="offers-wants-grid">
+        <div>
+          <div class="offers-wants-title">Offers</div>
+          <span class="neobrutal-badge">Illustration</span>
+          <span class="neobrutal-badge">Branding</span>
+        </div>
+        <div>
+          <div class="offers-wants-title">Wants</div>
+          <span class="neobrutal-badge yellow">CSS Grid</span>
+        </div>
+      </div>
+      <div class="match-card-pct-bar">
+        <div class="match-pct-fill" style="--bar-width: 76%;"></div>
+      </div>
+      <div class="match-card-actions">
+        <button type="button" class="match-action-btn dismiss" data-action="dismiss" title="Not Interested">✕</button>
+        <button type="button" class="neobrutal-btn black" style="flex:1; margin:0;">Propose Exchange</button>
+        <button type="button" class="match-action-btn like" data-action="like" title="Interested">♥</button>
+      </div>
+    </div>
+
   </div>
 </div>

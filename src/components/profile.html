@@ -1,49 +1,79 @@
-<header class="app-header">
-  <div class="app-logo" style="font-size: 1rem;">Student Profile</div>
-  <button type="button" id="profile-edit-btn" class="neobrutal-btn" style="width: auto; padding: 0.25rem 0.5rem; font-size: 0.7rem; box-shadow: none;">
-    EDIT
+<header class="app-header profile-header">
+  <div class="app-logo">👤 My Profile</div>
+  <button type="button" id="profile-edit-btn" class="neobrutal-btn" style="width: auto; padding: 0.35rem 0.75rem; font-size: 0.75rem;">
+    ✏ EDIT
   </button>
 </header>
 
 <div class="profile-screen">
   <div class="profile-card">
-    <div class="profile-avatar-circle">
-      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <!-- Avatar: shows custom image if available, falls back to SVG icon -->
+    <div class="profile-avatar-circle" id="profile-avatar-circle">
+      <img
+        id="profile-avatar-img"
+        src=""
+        alt="Profile"
+        style="display:none; width:100%; height:100%; border-radius:50%; object-fit:cover;"
+        onload="this.style.display='block'; document.getElementById('profile-avatar-icon').style.display='none';"
+        onerror="this.style.display='none'; document.getElementById('profile-avatar-icon').style.display='block';"
+      />
+      <svg id="profile-avatar-icon" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
         <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
         <circle cx="12" cy="7" r="4"></circle>
       </svg>
     </div>
     <h2 id="profile-name" class="profile-name">Abhinav Atul</h2>
-    <p id="profile-dept" class="profile-dept">Design Dept • Year 2</p>
-    <p id="profile-bio" class="profile-bio" style="margin-top: 0.5rem; max-width: 500px; text-align: center; font-size: 0.85rem; line-height: 1.4; color: #ccc;"></p>
+    <p id="profile-dept" class="profile-dept">DESIGN DEPT • YEAR 2</p>
+    <p id="profile-bio" class="profile-bio"></p>
   </div>
-  
+
   <div class="streak-rating-row">
     <div class="profile-metric-box">
-      <div class="metric-value">4.9</div>
+      <div class="metric-value">4.9 ⭐</div>
       <div class="metric-label">Rating</div>
     </div>
     <div class="profile-metric-box">
-      <div class="metric-value">14</div>
+      <div class="metric-value">🔥 14</div>
       <div class="metric-label">Day Streak</div>
     </div>
+    <div class="profile-metric-box">
+      <div class="metric-value">12</div>
+      <div class="metric-label">Sessions</div>
+    </div>
+    <div class="profile-metric-box">
+      <div class="metric-value">8</div>
+      <div class="metric-label">Skills</div>
+    </div>
   </div>
-  
+
   <div class="badge-container">
-    <h4 class="badge-container-title">I Can Teach</h4>
+    <h4 class="badge-container-title">🎓 I Can Teach</h4>
     <div class="badge-list">
       <span class="neobrutal-badge">UI/UX Design</span>
       <span class="neobrutal-badge">Figma</span>
       <span class="neobrutal-badge">Wireframing</span>
+      <span class="neobrutal-badge">Color Theory</span>
+      <span class="neobrutal-badge">Prototyping</span>
     </div>
   </div>
-  
+
   <div class="badge-container">
-    <h4 class="badge-container-title">I Want to Learn</h4>
+    <h4 class="badge-container-title">📚 I Want to Learn</h4>
     <div class="badge-list">
       <span class="neobrutal-badge yellow">React.js</span>
       <span class="neobrutal-badge yellow">Javascript</span>
       <span class="neobrutal-badge yellow">CSS Grid</span>
+      <span class="neobrutal-badge yellow">Next.js</span>
+    </div>
+  </div>
+
+  <div class="badge-container">
+    <h4 class="badge-container-title">🏅 Achievements</h4>
+    <div class="profile-achievements">
+      <div class="achievement-chip">🔥 14-Day Streak</div>
+      <div class="achievement-chip">⭐ Top Rated</div>
+      <div class="achievement-chip">🤝 10+ Exchanges</div>
+      <div class="achievement-chip">🎓 Quick Learner</div>
     </div>
   </div>
 </div>

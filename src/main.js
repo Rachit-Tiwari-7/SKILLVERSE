@@ -11,12 +11,15 @@ import './styles/matches.css';
 import './styles/proposal.css';
 import './styles/status.css';
 import './styles/chat.css';
+import './styles/ai-chatbot.css';
 
 // Import JS Logic Modules
+import Lenis from 'lenis';
 import { state, addLog } from './state.js';
 import { navigate, goBack, renderChatsList, renderChatRoom, setSwitchState } from './router.js';
 import { sendChatMessage } from './chatbot.js';
 import { startTimer } from './timer.js';
+import { initAiAssistant } from './ai-assistant.js';
 
 // Import Component HTML Files as raw strings (Vite feature)
 import loginHtml from './components/login.html?raw';
@@ -143,6 +146,25 @@ function bindEvents() {
     joinCallBtn.addEventListener('click', () => navigate('waiting-room'));
   }
 
+  // Quick Action cards
+  const qaMatches = document.getElementById('qa-matches');
+  if (qaMatches) qaMatches.addEventListener('click', () => navigate('matches'));
+
+  const qaChat = document.getElementById('qa-chat');
+  if (qaChat) qaChat.addEventListener('click', () => navigate('messages'));
+
+  const qaProfile = document.getElementById('qa-profile');
+  if (qaProfile) qaProfile.addEventListener('click', () => navigate('profile'));
+
+  const rescheduleBtn = document.getElementById('reschedule-btn');
+  if (rescheduleBtn) {
+    rescheduleBtn.addEventListener('click', () => {
+      rescheduleBtn.textContent = '✓ Noted!';
+      rescheduleBtn.style.opacity = '1';
+      setTimeout(() => { rescheduleBtn.textContent = 'Reschedule'; rescheduleBtn.style.opacity = '0.7'; }, 2000);
+    });
+  }
+
   // --- Waiting Room ---
   const waitBackBtn = document.getElementById('waiting-back-btn');
   if (waitBackBtn) {
@@ -249,10 +271,53 @@ function bindEvents() {
     });
   }
 
-  // --- Matches ---
-  const matchesProposeBtn = document.getElementById('matches-propose-btn');
-  if (matchesProposeBtn) {
-    matchesProposeBtn.addEventListener('click', () => navigate('proposal'));
+  // --- Matches --- (event delegation on the screen container)
+  const matchesScreen = document.getElementById('screen-matches');
+  if (matchesScreen) {
+    matchesScreen.addEventListener('click', (e) => {
+
+      // Filter buttons
+      const filterBtn = e.target.closest('.match-filter-btn');
+      if (filterBtn) {
+        const filter = filterBtn.dataset.filter;
+        // Update active state
+        matchesScreen.querySelectorAll('.match-filter-btn').forEach(b => b.classList.remove('active'));
+        filterBtn.classList.add('active');
+        // Show/hide cards
+        matchesScreen.querySelectorAll('.match-card').forEach(card => {
+          if (filter === 'all' || card.dataset.dept === filter) {
+            card.classList.remove('hidden');
+          } else {
+            card.classList.add('hidden');
+          }
+        });
+        return;
+      }
+
+      // Like / Dismiss buttons
+      const actionBtn = e.target.closest('.match-action-btn');
+      if (actionBtn) {
+        const card = actionBtn.closest('.match-card');
+        const action = actionBtn.dataset.action;
+        if (card) {
+          card.classList.add(action === 'like' ? 'liked' : 'dismissed');
+          setTimeout(() => card.remove(), 380);
+          // Update count badge
+          const countBadge = document.getElementById('match-count-badge');
+          if (countBadge) {
+            const remaining = matchesScreen.querySelectorAll('.match-card:not(.liked):not(.dismissed)').length - 1;
+            countBadge.textContent = `${remaining} Match${remaining !== 1 ? 'es' : ''}`;
+          }
+        }
+        return;
+      }
+
+      // Propose Exchange buttons (any inside match cards)
+      const proposeBtn = e.target.closest('.neobrutal-btn');
+      if (proposeBtn && proposeBtn.textContent.trim() === 'Propose Exchange') {
+        navigate('proposal');
+      }
+    });
   }
 
   // --- Proposal ---
@@ -318,16 +383,53 @@ function bindEvents() {
 // 3. Application Bootstrapper
 document.addEventListener('DOMContentLoaded', () => {
   addLog('Initializing modular bootstrapper...');
-  
+
   // Load Screen templates into DOM
   loadComponents();
-  
+
   // Bind UI interactions
   bindEvents();
-  
+
   // Start wait timer loops
   startTimer();
-  
+
   // Route to entry screen
   navigate('login', false);
+
+  // Initialize AI Chatbot Widget
+  initAiAssistant();
+
+  // ── Lenis Smooth Scroll ──────────────────────────────────────────────
+  const lenis = new Lenis({
+    duration: 1.2,          // scroll animation duration in seconds
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // expo ease-out
+    orientation: 'vertical',
+    gestureOrientation: 'vertical',
+    smoothWheel: true,
+    wheelMultiplier: 1,
+    touchMultiplier: 2,
+    infinite: false,
+  });
+
+  // Pause Lenis when the user is typing in an input so scroll doesn't interfere
+  document.addEventListener('focusin', (e) => {
+    if (e.target.matches('input, textarea, [contenteditable]')) {
+      lenis.stop();
+    }
+  });
+  document.addEventListener('focusout', (e) => {
+    if (e.target.matches('input, textarea, [contenteditable]')) {
+      lenis.start();
+    }
+  });
+
+  // RAF loop — drives Lenis every animation frame
+  function raf(time) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+  }
+  requestAnimationFrame(raf);
+  // ────────────────────────────────────────────────────────────────────
 });
+
+// HMR Trigger 2

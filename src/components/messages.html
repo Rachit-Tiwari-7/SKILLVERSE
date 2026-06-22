@@ -1,13 +1,19 @@
-<header class="app-header">
-  <div class="app-logo">MESSAGES</div>
-  <div style="width: 16px; height: 16px; background-color: var(--primary-blue); border: 1.5px solid #000;"></div>
+<header class="app-header messages-header">
+  <div class="messages-header-left">
+    <div class="app-logo">💬 Messages</div>
+    <span class="messages-online-count">3 online</span>
+  </div>
+  <button class="messages-compose-btn" title="New Message">✏</button>
 </header>
 
-<div class="messages-screen">
+<div class="messages-screen" data-lenis-prevent="true">
   <div class="chat-search-bar">
-    <input type="text" class="neobrutal-input" id="chat-search-input" placeholder="SEARCH CHATS...">
+    <div class="chat-search-wrapper">
+      <span class="chat-search-icon">🔍</span>
+      <input type="text" class="chat-search-input" id="chat-search-input" placeholder="Search conversations...">
+    </div>
   </div>
-  
+
   <!-- Chat list container -->
   <div class="chat-list" id="chats-list-container">
     <!-- Dynamic chat list items injected by state/router modules -->

@@ -32,6 +32,7 @@
   margin: 0;
   line-height: 1.1;
   text-align: center;
+  word-break: break-word;
 }
 
 .profile-dept {
@@ -42,6 +43,7 @@
   color: var(--primary-yellow);
   margin-top: 0.35rem;
   letter-spacing: 0.5px;
+  text-align: center;
 }
 
 .profile-bio {
@@ -57,7 +59,7 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
 
 .profile-metric-box {
@@ -81,9 +83,7 @@
   text-transform: uppercase;
   color: #666;
 }
-body.dark-mode .metric-label {
-  color: #ccc;
-}
+body.dark-mode .metric-label { color: #ccc; }
 
 .badge-container {
   border: var(--border-thick);
@@ -100,4 +100,47 @@ body.dark-mode .metric-label {
   margin-bottom: 1rem;
   border-bottom: 2px solid var(--black);
   padding-bottom: 0.35rem;
+}
+
+.badge-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+}
+
+@media (max-width: 767px) {
+  .streak-rating-row {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.6rem;
+    margin-bottom: 1rem;
+  }
+  .metric-value { font-size: 1.15rem; }
+  .profile-card { padding: 1.5rem 1rem; }
+  .profile-name { font-size: 1.5rem; }
+  .profile-avatar-circle { width: 72px; height: 72px; }
+  .badge-container { padding: 1rem; margin-bottom: 0.85rem; }
+}
+
+/* Achievements */
+.profile-achievements {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.achievement-chip {
+  padding: 0.4rem 0.85rem;
+  border: var(--border-thin);
+  background-color: var(--primary-yellow);
+  font-family: var(--font-header);
+  font-weight: 900;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  box-shadow: 2px 2px 0 var(--black);
+  cursor: default;
+  transition: transform 0.15s ease;
+  color: #000;
+}
+.achievement-chip:hover {
+  transform: translate(-1px, -1px);
 }

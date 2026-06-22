@@ -55,4 +55,14 @@ body.dark-mode .proposal-item-label {
   font-weight: 900;
   text-transform: uppercase;
   margin-top: 0.15rem;
+  word-break: break-word;
+}
+
+@media (max-width: 767px) {
+  .proposal-summary-card {
+    padding: 1rem;
+  }
+  .proposal-item-val {
+    font-size: 1rem;
+  }
 }

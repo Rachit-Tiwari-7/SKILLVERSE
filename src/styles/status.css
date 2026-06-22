@@ -1,15 +1,36 @@
-/* --- Screen 8: Status --- */
+/* --- Screen 8: Status ---
+   The parent #screen-status wrapper uses fadeSlideUp (a transform animation)
+   which would break position:fixed children. So we override the wrapper itself
+   to be the fixed overlay with a plain opacity animation, and make .status-screen
+   fill it normally with position:relative.
+*/
+#screen-status {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+}
+
+#screen-status.active {
+  display: flex;
+  animation: fadeIn 0.3s ease both; /* NO transform — avoids stacking context issue */
+}
+
 .status-screen {
   background-color: var(--primary-yellow);
   padding: 3rem 2rem;
+  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  position: absolute;
-  inset: 0;
-  z-index: 100;
+  position: relative;
   color: #000000;
 }
 

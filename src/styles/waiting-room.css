@@ -103,3 +103,12 @@ body.dark-mode .waiting-subtitle {
   gap: 1rem;
   margin-bottom: 1.5rem;
 }
+
+@media (max-width: 767px) {
+  .waiting-title {
+    font-size: 1.75rem;
+  }
+  .video-controls-row {
+    gap: 0.6rem;
+  }
+}

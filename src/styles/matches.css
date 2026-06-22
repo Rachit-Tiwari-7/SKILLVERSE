@@ -1,6 +1,51 @@
 /* --- Screen 6: Matches --- */
+
+/* Match count badge in header */
+.match-count-badge {
+  font-family: var(--font-header);
+  font-size: 0.75rem;
+  font-weight: 900;
+  padding: 0.3rem 0.75rem;
+  background-color: var(--primary-blue);
+  color: #fff;
+  border: var(--border-thin);
+  box-shadow: 2px 2px 0 var(--black);
+}
+
+/* Filter Bar */
+.match-filter-bar {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.match-filter-btn {
+  font-family: var(--font-header);
+  font-weight: 900;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  padding: 0.4rem 0.85rem;
+  border: var(--border-thin);
+  background-color: var(--white);
+  color: var(--text-color);
+  cursor: pointer;
+  box-shadow: 2px 2px 0 var(--black);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+}
+
+.match-filter-btn:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 3px 3px 0 var(--black);
+}
+
+.match-filter-btn.active {
+  background-color: var(--primary-yellow);
+  color: #000;
+}
+
 .matches-screen {
-  padding: 0.5rem 0;
+  padding: 0;
 }
 
 .match-list {
@@ -8,6 +53,12 @@
   grid-template-columns: 1fr;
   gap: 1.5rem;
 }
+
+/* Staggered card entrance */
+.match-card:nth-child(1) { animation: fadeSlideUp 0.3s ease 0.05s both; }
+.match-card:nth-child(2) { animation: fadeSlideUp 0.3s ease 0.12s both; }
+.match-card:nth-child(3) { animation: fadeSlideUp 0.3s ease 0.19s both; }
+.match-card:nth-child(4) { animation: fadeSlideUp 0.3s ease 0.26s both; }
 
 .match-card {
   border: var(--border-thick);
@@ -17,11 +68,28 @@
   position: relative;
 }
 
+/* Card dismissed/liked states */
+.match-card.dismissed {
+  animation: slideOutLeft 0.35s ease forwards;
+}
+.match-card.liked {
+  animation: slideOutRight 0.35s ease forwards;
+}
+
+@keyframes slideOutLeft {
+  to { opacity: 0; transform: translateX(-50px); }
+}
+@keyframes slideOutRight {
+  to { opacity: 0; transform: translateX(50px); }
+}
+
 .match-card-header {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
   margin-bottom: 1rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
 }
 
 .match-name {
@@ -40,9 +108,7 @@
   text-transform: uppercase;
   margin-top: 0.35rem;
 }
-body.dark-mode .match-dept {
-  color: #ccc;
-}
+body.dark-mode .match-dept { color: #ccc; }
 
 .match-percentage-badge {
   background-color: var(--primary-blue);
@@ -53,13 +119,14 @@ body.dark-mode .match-dept {
   font-weight: 900;
   font-size: 0.95rem;
   box-shadow: 2px 2px 0px var(--black);
+  animation: bounceIn 0.5s ease both;
 }
 
 .offers-wants-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
   background-color: var(--bg-gray);
   padding: 0.75rem;
   border: var(--border-thin);
@@ -72,8 +139,82 @@ body.dark-mode .match-dept {
   color: #555;
   margin-bottom: 0.5rem;
 }
-body.dark-mode .offers-wants-title {
-  color: #bbb;
+body.dark-mode .offers-wants-title { color: #bbb; }
+
+/* Animated percentage bar */
+.match-card-pct-bar {
+  height: 6px;
+  background-color: var(--bg-gray);
+  border: 1.5px solid var(--black);
+  margin-bottom: 1rem;
+  overflow: hidden;
+}
+
+.match-pct-fill {
+  height: 100%;
+  background-color: var(--primary-blue);
+  width: 0;
+  animation: barFill 1s ease 0.3s forwards;
+}
+
+/* Like / Dismiss Action Row */
+.match-card-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.match-action-btn {
+  width: 42px;
+  height: 42px;
+  border: var(--border-thick);
+  background-color: var(--white);
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 2px 2px 0 var(--black);
+  flex-shrink: 0;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.match-action-btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0 var(--black);
+}
+
+.match-action-btn.like {
+  background-color: var(--primary-green);
+  color: #fff;
+}
+
+.match-action-btn.dismiss {
+  background-color: var(--primary-red);
+  color: #fff;
+}
+
+/* Card hidden when filtered out */
+.match-card.hidden {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .match-card {
+    padding: 1rem;
+  }
+  .offers-wants-grid {
+    gap: 0.5rem;
+    padding: 0.5rem;
+  }
+  .match-name {
+    font-size: 1.25rem;
+  }
+  .match-action-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 0.95rem;
+  }
 }
 
 @media (min-width: 768px) {
@@ -81,3 +222,4 @@ body.dark-mode .offers-wants-title {
     grid-template-columns: repeat(2, 1fr);
   }
 }
+

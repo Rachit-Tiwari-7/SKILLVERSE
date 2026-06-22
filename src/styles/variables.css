@@ -20,6 +20,7 @@
   --site-bg: #F9FAFB;
   --panel-bg: #FFFFFF;
   --text-color: #000000;
+  --dot-color: rgba(0, 0, 0, 0.15);
 }
 
 /* Dark Mode Variables Override */
@@ -35,4 +36,5 @@ body.dark-mode {
   --shadow-sm: 2px 2px 0px #FFFFFF;
   --shadow-md: 4px 4px 0px #FFFFFF;
   --shadow-lg: 8px 8px 0px #FFFFFF;
+  --dot-color: rgba(255, 255, 255, 0.15);
 }

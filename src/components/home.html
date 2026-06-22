@@ -2,20 +2,49 @@
   <div class="welcome-banner">
     <p class="welcome-sub">Welcome Back</p>
     <h3 id="home-welcome-name" class="welcome-name">Abhinav Atul</h3>
+    <div class="xp-bar-container">
+      <div class="xp-bar-label">
+        <span>⚡ Level 4 — Skill Sharer</span>
+        <span>720 / 1000 XP</span>
+      </div>
+      <div class="xp-bar-track">
+        <div class="xp-bar-fill"></div>
+      </div>
+    </div>
   </div>
-  
+
   <div class="stats-grid">
     <div class="stat-box blue">
-      <div class="stat-value">12</div>
+      <div class="stat-value" id="stat-taught">12</div>
       <div class="stat-label">Sessions Taught</div>
     </div>
     <div class="stat-box red">
-      <div class="stat-value">08</div>
+      <div class="stat-value" id="stat-learned">08</div>
       <div class="stat-label">Skills Learned</div>
     </div>
+    <div class="stat-box black">
+      <div class="stat-value" id="stat-streak">🔥14</div>
+      <div class="stat-label">Day Streak</div>
+    </div>
   </div>
-  
-  <h4 class="section-label">Upcoming Sessions</h4>
+
+  <h4 class="section-label">Quick Actions</h4>
+  <div class="quick-actions-grid">
+    <div class="quick-action-card" id="qa-matches" role="button">
+      <span class="quick-action-icon">🤝</span>
+      <span class="quick-action-label">Find Matches</span>
+    </div>
+    <div class="quick-action-card" id="qa-chat" role="button">
+      <span class="quick-action-icon">💬</span>
+      <span class="quick-action-label">Open Chat</span>
+    </div>
+    <div class="quick-action-card" id="qa-profile" role="button">
+      <span class="quick-action-icon">👤</span>
+      <span class="quick-action-label">My Profile</span>
+    </div>
+  </div>
+
+  <h4 class="section-label">Upcoming Session</h4>
   <div class="upcoming-card">
     <div class="upcoming-time">
       <span class="pulse-dot"></span>
@@ -23,6 +52,40 @@
     </div>
     <h3 class="upcoming-title">React Hooks</h3>
     <p class="upcoming-instructor">With Alex Chen</p>
-    <button type="button" id="join-call-btn" class="neobrutal-btn black" style="width: auto;">Join Call</button>
+    <div class="upcoming-card-actions">
+      <button type="button" id="join-call-btn" class="neobrutal-btn black" style="width: auto;">🎥 Join Call</button>
+      <button type="button" class="neobrutal-btn" style="width: auto; opacity: 0.7;" id="reschedule-btn">Reschedule</button>
+    </div>
+  </div>
+
+  <h4 class="section-label">🏆 Top Skill Sharers</h4>
+  <div class="leaderboard-list">
+    <div class="leaderboard-item">
+      <div class="leaderboard-rank gold">1</div>
+      <div class="leaderboard-avatar red">A</div>
+      <div class="leaderboard-info">
+        <div class="leaderboard-name">Alex Chen</div>
+        <div class="leaderboard-score">42 sessions · 4.9★ rating</div>
+      </div>
+      <div class="leaderboard-badge">🥇</div>
+    </div>
+    <div class="leaderboard-item">
+      <div class="leaderboard-rank silver">2</div>
+      <div class="leaderboard-avatar blue">D</div>
+      <div class="leaderboard-info">
+        <div class="leaderboard-name">David Kim</div>
+        <div class="leaderboard-score">35 sessions · 4.8★ rating</div>
+      </div>
+      <div class="leaderboard-badge">🥈</div>
+    </div>
+    <div class="leaderboard-item">
+      <div class="leaderboard-rank bronze">3</div>
+      <div class="leaderboard-avatar green">M</div>
+      <div class="leaderboard-info">
+        <div class="leaderboard-name">Maya Patel</div>
+        <div class="leaderboard-score">28 sessions · 4.7★ rating</div>
+      </div>
+      <div class="leaderboard-badge">🥉</div>
+    </div>
   </div>
 </div>

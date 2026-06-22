@@ -25,10 +25,10 @@
     </nav>
     
     <div class="header-controls">
-      <button class="neobrutal-btn yellow" id="resetStateBtn" style="padding: 0.5rem 1rem; font-size: 0.8rem; box-shadow: 2px 2px 0px #000; width: auto;">
+      <button class="neobrutal-btn yellow" id="resetStateBtn">
         ↺ RESET STATE
       </button>
-      <button class="neobrutal-btn black" id="themeToggleBtn" style="padding: 0.5rem 1rem; font-size: 0.8rem; box-shadow: 2px 2px 0px #fff; width: auto; margin-left: 0.5rem;">
+      <button class="neobrutal-btn black" id="themeToggleBtn">
         ☾ DARK MODE
       </button>
     </div>
@@ -71,6 +71,36 @@
       <span>Me</span>
     </div>
   </nav>
+
+  <!-- AI Chatbot Widget -->
+  <div class="ai-chatbot-widget" id="ai-chatbot-widget">
+    <!-- Chat Window -->
+    <div class="ai-chat-window" id="ai-chat-window" style="display: none;">
+      <div class="ai-chat-header">
+        <div class="ai-chat-title">
+          <span class="ai-icon">🤖</span>
+          <span>Skillverse AI</span>
+        </div>
+        <button class="ai-chat-close-btn" id="ai-chat-close-btn">✖</button>
+      </div>
+      <div class="ai-chat-messages" id="ai-chat-messages" data-lenis-prevent="true">
+        <div class="ai-msg ai-msg-bot">
+          <div class="ai-bubble">Hello! I'm the Skillverse AI. How can I help you find matches or navigate the platform today?</div>
+        </div>
+      </div>
+      <div class="ai-chat-input-area">
+        <input type="text" id="ai-chat-input" placeholder="Ask something...">
+        <button id="ai-chat-send-btn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+        </button>
+      </div>
+    </div>
+    
+    <!-- Floating Button -->
+    <button class="ai-fab-btn" id="ai-fab-btn" title="Ask AI">
+      <span class="ai-fab-icon">✨</span>
+    </button>
+  </div>
 
   <!-- Load Main script -->
   <script type="module" src="/src/main.js"></script>
