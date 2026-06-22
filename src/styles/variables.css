@@ -1,0 +1,38 @@
+/* --- Neobrutalism CSS Custom Variables --- */
+:root {
+  --primary-yellow: #FFD028;
+  --primary-red: #FF4A4A;
+  --primary-blue: #2E62F6;
+  --primary-green: #00AD6F;
+  --black: #000000;
+  --white: #FFFFFF;
+  
+  --bg-gray: #F3F4F6;
+  --font-header: 'Outfit', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  
+  --border-thick: 3px solid #000000;
+  --border-thin: 2px solid #000000;
+  --shadow-sm: 2px 2px 0px #000000;
+  --shadow-md: 4px 4px 0px #000000;
+  --shadow-lg: 8px 8px 0px #000000;
+  
+  --site-bg: #F9FAFB;
+  --panel-bg: #FFFFFF;
+  --text-color: #000000;
+}
+
+/* Dark Mode Variables Override */
+body.dark-mode {
+  --site-bg: #0F172A;
+  --panel-bg: #1E293B;
+  --text-color: #F8FAFC;
+  --white: #1E293B;
+  --bg-gray: #0F172A;
+  --black: #F8FAFC;
+  --border-thick: 3px solid #FFFFFF;
+  --border-thin: 2px solid #FFFFFF;
+  --shadow-sm: 2px 2px 0px #FFFFFF;
+  --shadow-md: 4px 4px 0px #FFFFFF;
+  --shadow-lg: 8px 8px 0px #FFFFFF;
+}

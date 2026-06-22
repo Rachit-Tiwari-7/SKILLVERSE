@@ -1,0 +1,103 @@
+/* --- Screen 4: Profile --- */
+.profile-card {
+  border: var(--border-thick);
+  background-color: #1C212E;
+  color: #FFFFFF;
+  padding: 2rem 1.5rem;
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile-avatar-circle {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background-color: #FFFFFF;
+  border: 3px solid #000000;
+  margin-bottom: 1.25rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #000;
+}
+
+.profile-name {
+  font-family: var(--font-header);
+  font-size: 2rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  margin: 0;
+  line-height: 1.1;
+  text-align: center;
+}
+
+.profile-dept {
+  font-family: var(--font-header);
+  font-weight: 800;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  color: var(--primary-yellow);
+  margin-top: 0.35rem;
+  letter-spacing: 0.5px;
+}
+
+.profile-bio {
+  margin-top: 0.5rem;
+  max-width: 500px;
+  text-align: center;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  color: #ccc;
+}
+
+.streak-rating-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.profile-metric-box {
+  border: var(--border-thick);
+  padding: 0.85rem;
+  text-align: center;
+  background-color: var(--white);
+  color: var(--text-color);
+  box-shadow: var(--shadow-sm);
+}
+
+.metric-value {
+  font-family: var(--font-header);
+  font-size: 1.5rem;
+  font-weight: 900;
+}
+
+.metric-label {
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #666;
+}
+body.dark-mode .metric-label {
+  color: #ccc;
+}
+
+.badge-container {
+  border: var(--border-thick);
+  padding: 1.25rem;
+  margin-bottom: 1.25rem;
+  background-color: var(--white);
+}
+
+.badge-container-title {
+  font-family: var(--font-header);
+  font-size: 0.9rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid var(--black);
+  padding-bottom: 0.35rem;
+}

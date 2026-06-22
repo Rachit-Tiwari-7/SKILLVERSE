@@ -1,0 +1,116 @@
+/* --- Screen 2: Home --- */
+.welcome-banner {
+  background-color: var(--primary-yellow);
+  border: var(--border-thick);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 1.5rem;
+  color: #000000;
+}
+
+.welcome-sub {
+  font-family: var(--font-header);
+  font-weight: 900;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+
+.welcome-name {
+  font-family: var(--font-header);
+  font-weight: 900;
+  font-size: 2.25rem;
+  text-transform: uppercase;
+  line-height: 1;
+  margin-top: 0.25rem;
+  letter-spacing: -0.5px;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.stat-box {
+  border: var(--border-thick);
+  padding: 1.25rem 1rem;
+  box-shadow: var(--shadow-sm);
+  color: #FFFFFF;
+}
+
+.stat-box.blue {
+  background-color: var(--primary-blue);
+}
+
+.stat-box.red {
+  background-color: var(--primary-red);
+}
+
+.stat-value {
+  font-family: var(--font-header);
+  font-size: 2.5rem;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 0.7rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 0.35rem;
+}
+
+.section-label {
+  font-family: var(--font-header);
+  font-size: 1.1rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 1rem;
+}
+
+.upcoming-card {
+  border: var(--border-thick);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+  background-color: var(--white);
+}
+
+.upcoming-time {
+  font-size: 0.75rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: #666;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.upcoming-title {
+  font-family: var(--font-header);
+  font-size: 1.75rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  margin-bottom: 0.25rem;
+  letter-spacing: -0.5px;
+}
+
+.upcoming-instructor {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #555;
+  margin-bottom: 1.5rem;
+}
+body.dark-mode .upcoming-instructor {
+  color: #ccc;
+}
+
+@media (min-width: 768px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skillverse - Student Skill Exchange</title>
+</head>
+<body>
+
+  <!-- Global Header Bar -->
+  <header class="site-header">
+    <div class="logo-zone" id="logo-home-trigger">
+      <div class="logo-shapes">
+        <div class="logo-circle"></div>
+        <div class="logo-square"></div>
+      </div>
+      <h1 class="logo-title">SKILLVERSE</h1>
+    </div>
+    
+    <nav class="desktop-nav">
+      <button class="desktop-nav-link" data-nav="home" id="nav-link-home">Home</button>
+      <button class="desktop-nav-link" data-nav="matches" id="nav-link-matches">Matches</button>
+      <button class="desktop-nav-link" data-nav="messages" id="nav-link-messages">Chats</button>
+      <button class="desktop-nav-link" data-nav="profile" id="nav-link-profile">Me</button>
+    </nav>
+    
+    <div class="header-controls">
+      <button class="neobrutal-btn yellow" id="resetStateBtn" style="padding: 0.5rem 1rem; font-size: 0.8rem; box-shadow: 2px 2px 0px #000; width: auto;">
+        ↺ RESET STATE
+      </button>
+      <button class="neobrutal-btn black" id="themeToggleBtn" style="padding: 0.5rem 1rem; font-size: 0.8rem; box-shadow: 2px 2px 0px #fff; width: auto; margin-left: 0.5rem;">
+        ☾ DARK MODE
+      </button>
+    </div>
+  </header>
+
+  <!-- Responsive Layout Main Content Container -->
+  <main class="main-content" id="main-content">
+    <!-- Active screen components will be dynamically loaded here by main.js -->
+  </main>
+
+  <!-- Mobile Bottom Tab Navigation -->
+  <nav class="app-nav-bar mobile-only-nav">
+    <div class="app-nav-item" data-nav="home" id="mobile-nav-home">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+        <polyline points="9 22 9 12 15 12 15 22"></polyline>
+      </svg>
+      <span>Home</span>
+    </div>
+    <div class="app-nav-item" data-nav="matches" id="mobile-nav-matches">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+        <circle cx="9" cy="7" r="4"></circle>
+        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+      </svg>
+      <span>Match</span>
+    </div>
+    <div class="app-nav-item" data-nav="messages" id="mobile-nav-messages">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+      </svg>
+      <span>Chat</span>
+    </div>
+    <div class="app-nav-item" data-nav="profile" id="mobile-nav-profile">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+        <circle cx="12" cy="7" r="4"></circle>
+      </svg>
+      <span>Me</span>
+    </div>
+  </nav>
+
+  <!-- Load Main script -->
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

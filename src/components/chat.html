@@ -1,0 +1,23 @@
+<header class="app-header">
+  <button type="button" id="chat-mobile-back-btn" class="neobrutal-btn chat-back-button" style="width: auto; padding: 0.25rem 0.5rem; font-size: 0.7rem; box-shadow: none;">
+    ← BACK
+  </button>
+  <div class="app-logo" style="font-size: 0.9rem; align-items: center; gap:0.35rem;">
+    <span id="chat-header-title">Alex Chen</span>
+    <div class="pulse-dot" style="width: 8px; height: 8px; background-color: var(--primary-green); margin-left: 2px;"></div>
+  </div>
+  <div style="width: 16px; height: 16px; background-color: var(--primary-yellow); border: 1.5px solid #000;"></div>
+</header>
+
+<div class="exchange-started-banner">Exchange Started</div>
+
+<!-- Messages log -->
+<div class="chat-messages-container" id="chat-messages-log">
+  <!-- Message bubbles are injected by state/router modules -->
+</div>
+
+<!-- Typing footer -->
+<div class="chat-input-bar">
+  <input type="text" class="chat-text-input" id="chat-message-input" placeholder="TYPE MESSAGE...">
+  <button type="button" id="chat-send-btn" class="chat-send-btn"></button>
+</div>

@@ -1,0 +1,336 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@700;800;900&display=swap');
+@import './variables.css';
+
+/* Resets */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--site-bg);
+  color: var(--text-color);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  overflow-x: hidden;
+}
+
+/* Main Layout Content Container */
+.main-content {
+  flex: 1;
+  width: 100%;
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 0 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+body:not(.logged-in) .main-content {
+  justify-content: center;
+  max-width: 480px;
+  margin: auto;
+}
+
+/* Screens Core */
+.skillverse-screen {
+  display: none;
+  flex-direction: column;
+  background-color: var(--panel-bg);
+  border: var(--border-thick);
+  box-shadow: var(--shadow-lg);
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+  transition: background-color 0.3s ease, border 0.3s ease, box-shadow 0.3s ease;
+  margin-bottom: 2rem;
+}
+
+.skillverse-screen.active {
+  display: flex;
+}
+
+/* Inner App Header inside screens */
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 1rem;
+  border-bottom: var(--border-thick);
+  margin-bottom: 1.5rem;
+}
+
+.app-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-header);
+  font-size: 1.25rem;
+  font-weight: 900;
+  letter-spacing: -0.5px;
+  text-transform: uppercase;
+}
+
+/* Neobrutalist Generic Components */
+.neobrutal-btn {
+  font-family: var(--font-header);
+  font-weight: 900;
+  font-size: 1rem;
+  text-transform: uppercase;
+  padding: 0.75rem 1.25rem;
+  border: var(--border-thick);
+  background-color: var(--white);
+  color: var(--text-color);
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+  width: 100%;
+}
+
+.neobrutal-btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: var(--shadow-md);
+}
+
+.neobrutal-btn:active {
+  transform: translate(1px, 1px);
+  box-shadow: var(--shadow-sm);
+}
+
+.neobrutal-btn.yellow {
+  background-color: var(--primary-yellow);
+  color: #000000;
+}
+.neobrutal-btn.red {
+  background-color: var(--primary-red);
+  color: #FFFFFF;
+}
+.neobrutal-btn.blue {
+  background-color: var(--primary-blue);
+  color: #FFFFFF;
+}
+.neobrutal-btn.black {
+  background-color: #000000;
+  color: #FFFFFF;
+}
+body.dark-mode .neobrutal-btn.black {
+  background-color: #FFFFFF;
+  color: #000000;
+}
+
+/* Inputs & Labels */
+.neobrutal-input-group {
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.neobrutal-label {
+  font-family: var(--font-header);
+  font-weight: 900;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.neobrutal-input {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  padding: 0.85rem;
+  border: var(--border-thick);
+  background-color: var(--white);
+  color: var(--text-color);
+  width: 100%;
+  outline: none;
+  border-radius: 0;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.neobrutal-input:focus {
+  box-shadow: var(--shadow-md);
+  background-color: var(--bg-gray);
+}
+
+/* Dropdown Selects */
+.neobrutal-select-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.neobrutal-select {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  padding: 0.85rem;
+  border: var(--border-thick);
+  background-color: var(--white);
+  color: var(--text-color);
+  width: 100%;
+  outline: none;
+  border-radius: 0;
+  box-shadow: var(--shadow-sm);
+  appearance: none;
+  cursor: pointer;
+}
+
+.neobrutal-select-wrapper::after {
+  content: '▼';
+  font-size: 0.7rem;
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+/* Switches & Toggles */
+.neobrutal-toggle-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.85rem 1rem;
+  border: var(--border-thick);
+  margin-bottom: 1.25rem;
+  background-color: var(--white);
+  box-shadow: var(--shadow-sm);
+}
+
+.toggle-label {
+  font-family: var(--font-header);
+  font-weight: 900;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+}
+
+.neobrutal-switch {
+  width: 54px;
+  height: 28px;
+  border: var(--border-thin);
+  background-color: var(--white);
+  position: relative;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.neobrutal-switch::after {
+  content: '';
+  width: 22px;
+  height: 22px;
+  background-color: var(--primary-blue);
+  border: 1.5px solid var(--black);
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.neobrutal-switch.checked {
+  background-color: var(--primary-yellow);
+}
+
+.neobrutal-switch.checked::after {
+  transform: translateX(27px);
+  background-color: var(--primary-blue);
+}
+
+/* Badges */
+.neobrutal-badge {
+  font-size: 0.75rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  padding: 0.35rem 0.65rem;
+  border: var(--border-thin);
+  background-color: var(--white);
+  color: var(--text-color);
+  display: inline-block;
+  box-shadow: 2px 2px 0px var(--black);
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.neobrutal-badge.yellow {
+  background-color: var(--primary-yellow);
+  color: #000000;
+}
+
+/* Animations */
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.3); opacity: 0.4; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes typing-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+/* --- Mobile Bottom Nav Style --- */
+.app-nav-bar {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 65px;
+  background-color: var(--panel-bg);
+  border-top: var(--border-thick);
+  z-index: 100;
+  padding-bottom: 5px;
+}
+
+.app-nav-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.7rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-right: var(--border-thin);
+  background-color: var(--panel-bg);
+  color: var(--text-color);
+  height: 100%;
+}
+
+.app-nav-item:last-child {
+  border-right: none;
+}
+
+.app-nav-item.active {
+  background-color: var(--primary-blue);
+  color: #FFFFFF;
+}
+
+.app-nav-item svg {
+  margin-bottom: 2px;
+}
+
+/* Mobile Breakpoint (< 768px) */
+@media (max-width: 767px) {
+  .main-content {
+    margin: 1rem auto 5rem auto;
+    padding: 0 1rem;
+  }
+  
+  .app-nav-bar {
+    display: flex;
+  }
+  
+  .skillverse-screen {
+    padding: 1.25rem;
+    margin-bottom: 1rem;
+  }
+}

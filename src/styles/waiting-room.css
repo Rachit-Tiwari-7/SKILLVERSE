@@ -1,0 +1,105 @@
+/* --- Screen 3: Waiting Room --- */
+.waiting-room-screen {
+  display: flex;
+  flex-direction: column;
+}
+
+.waiting-countdown-badge {
+  background-color: var(--primary-yellow);
+  border: var(--border-thick);
+  padding: 0.5rem 1rem;
+  font-family: var(--font-header);
+  font-weight: 900;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  display: inline-block;
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 1.5rem;
+  align-self: flex-start;
+  color: #000000;
+}
+
+.waiting-title {
+  font-family: var(--font-header);
+  font-size: 2.5rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.waiting-subtitle {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #444;
+  margin-bottom: 1.5rem;
+}
+body.dark-mode .waiting-subtitle {
+  color: #ccc;
+}
+
+.video-container {
+  aspect-ratio: 16/9;
+  background-color: #1E212E;
+  border: var(--border-thick);
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+}
+
+.camera-off-indicator {
+  text-align: center;
+}
+
+.camera-off-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: var(--primary-yellow);
+  border: var(--border-thin);
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.camera-off-icon::after {
+  content: '';
+  width: 20px;
+  height: 20px;
+  background-color: var(--white);
+  border: 2px solid var(--black);
+}
+
+.camera-off-text {
+  color: #FFFFFF;
+  font-family: var(--font-header);
+  font-weight: 900;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.video-status-overlay {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background-color: rgba(0, 0, 0, 0.75);
+  color: white;
+  padding: 0.35rem 0.65rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  border: 1px solid white;
+}
+
+.video-controls-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}

@@ -1,0 +1,44 @@
+<header class="app-header">
+  <button type="button" id="edit-profile-cancel-btn" class="neobrutal-btn" style="width: auto; padding: 0.25rem 0.5rem; font-size: 0.7rem; box-shadow: none;">
+    ← CANCEL
+  </button>
+  <div class="app-logo" style="font-size: 1rem;">Edit Profile</div>
+  <button type="submit" form="editProfileForm" class="neobrutal-btn blue" style="width: auto; padding: 0.25rem 0.5rem; font-size: 0.7rem; box-shadow: none;">
+    SAVE
+  </button>
+</header>
+
+<div class="edit-profile-screen">
+  <form id="editProfileForm">
+    <div class="neobrutal-input-group">
+      <label class="neobrutal-label" for="edit-display-name">Display Name</label>
+      <input class="neobrutal-input" type="text" id="edit-display-name" required value="Abhinav Atul">
+    </div>
+    
+    <div class="neobrutal-input-group">
+      <label class="neobrutal-label" for="edit-bio">Bio</label>
+      <textarea class="neobrutal-input" id="edit-bio" rows="3" style="resize: none;" required>Design student passionate about UI/UX. Looking to learn frontend dev.</textarea>
+    </div>
+    
+    <div class="neobrutal-input-group">
+      <label class="neobrutal-label" for="edit-dept">Department</label>
+      <input class="neobrutal-input" type="text" id="edit-dept" required value="Design Dept">
+    </div>
+    
+    <div class="neobrutal-label" style="margin-bottom: 0.5rem; display:block;">Preferences</div>
+    
+    <div class="neobrutal-toggle-group">
+      <span class="toggle-label">Email Notifications</span>
+      <div class="neobrutal-switch checked" id="switch-email"></div>
+    </div>
+    
+    <div class="neobrutal-toggle-group">
+      <span class="toggle-label">Available for Matches</span>
+      <div class="neobrutal-switch checked" id="switch-matches"></div>
+    </div>
+    
+    <button type="button" id="logout-btn" class="neobrutal-btn red" style="margin-top: 1rem;">
+      Log Out
+    </button>
+  </form>
+</div>

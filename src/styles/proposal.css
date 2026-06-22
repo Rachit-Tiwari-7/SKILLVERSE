@@ -1,0 +1,58 @@
+/* --- Screen 7: Proposal --- */
+.proposal-summary-card {
+  border: 3px dashed var(--black);
+  padding: 1.5rem;
+  background-color: var(--white);
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.proposal-summary-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.proposal-indicator-circle {
+  width: 16px;
+  height: 16px;
+  background-color: var(--primary-red);
+  border-radius: 50%;
+  border: 2px solid var(--black);
+  flex-shrink: 0;
+}
+
+.proposal-indicator-square {
+  width: 16px;
+  height: 16px;
+  background-color: var(--primary-blue);
+  border: 2px solid var(--black);
+  flex-shrink: 0;
+}
+
+.proposal-connector-line {
+  width: 3px;
+  height: 20px;
+  background-color: var(--black);
+  margin-left: 6px;
+}
+
+.proposal-item-label {
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: #666;
+  text-transform: uppercase;
+}
+body.dark-mode .proposal-item-label {
+  color: #ccc;
+}
+
+.proposal-item-val {
+  font-family: var(--font-header);
+  font-size: 1.15rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  margin-top: 0.15rem;
+}

@@ -1,0 +1,56 @@
+<header class="app-header">
+  <button type="button" id="proposal-back-btn" class="neobrutal-btn" style="width: auto; padding: 0.25rem 0.5rem; font-size: 0.7rem; box-shadow: none;">
+    ← BACK TO MATCHES
+  </button>
+  <div class="app-logo" style="font-size: 0.9rem;">Exchange Proposal</div>
+  <div style="width: 16px; height: 16px; background-color: var(--primary-red); border-radius:50%; border: 1.5px solid #000;"></div>
+</header>
+
+<div class="proposal-screen">
+  <form id="exchangeProposalForm">
+    <div class="proposal-summary-card">
+      <div class="proposal-summary-item">
+        <div class="proposal-indicator-circle"></div>
+        <div>
+          <div class="proposal-item-label">You Teach</div>
+          <div class="proposal-item-val">UI/UX Design</div>
+        </div>
+      </div>
+      
+      <div class="proposal-connector-line"></div>
+      
+      <div class="proposal-summary-item">
+        <div class="proposal-indicator-square"></div>
+        <div>
+          <div class="proposal-item-label">Alex Teaches</div>
+          <div class="proposal-item-val">React.js</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="neobrutal-input-group">
+      <label class="neobrutal-label" for="proposal-duration">Duration</label>
+      <div class="neobrutal-select-wrapper">
+        <select class="neobrutal-select" id="proposal-duration">
+          <option value="2 Weeks">2 Weeks</option>
+          <option value="4 Weeks" selected>4 Weeks</option>
+          <option value="6 Weeks">6 Weeks</option>
+          <option value="8 Weeks">8 Weeks</option>
+        </select>
+      </div>
+    </div>
+    
+    <div class="neobrutal-input-group">
+      <label class="neobrutal-label" for="proposal-format">Format</label>
+      <div class="neobrutal-select-wrapper">
+        <select class="neobrutal-select" id="proposal-format">
+          <option value="1x / Week">1x / Week</option>
+          <option value="2x / Week" selected>2x / Week</option>
+          <option value="3x / Week">3x / Week</option>
+        </select>
+      </div>
+    </div>
+    
+    <button type="submit" class="neobrutal-btn red" style="margin-top: 1.5rem;">Send Request</button>
+  </form>
+</div>

@@ -1,0 +1,116 @@
+/* Global Site Header */
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: var(--panel-bg);
+  border-bottom: var(--border-thick);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: background-color 0.3s ease, border-bottom 0.3s ease;
+}
+
+.logo-zone {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+}
+
+.logo-shapes {
+  display: flex;
+  gap: 0.3rem;
+}
+
+.logo-circle {
+  width: 18px;
+  height: 18px;
+  background-color: var(--primary-red);
+  border-radius: 50%;
+  border: 2px solid #000000;
+}
+body.dark-mode .logo-circle {
+  border: 2px solid #FFFFFF;
+}
+
+.logo-square {
+  width: 18px;
+  height: 18px;
+  background-color: var(--primary-blue);
+  border: 2px solid #000000;
+}
+body.dark-mode .logo-square {
+  border: 2px solid #FFFFFF;
+}
+
+.logo-title {
+  font-family: var(--font-header);
+  font-size: 1.6rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.5px;
+  color: var(--text-color);
+}
+
+.desktop-nav {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.desktop-nav-link {
+  font-family: var(--font-header);
+  font-weight: 800;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  padding: 0.5rem 1rem;
+  border: var(--border-thin);
+  background-color: var(--white);
+  color: var(--text-color);
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.1s ease, box-shadow 0.1s ease, background-color 0.2s ease;
+}
+
+.desktop-nav-link:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: var(--shadow-md);
+}
+
+.desktop-nav-link.active {
+  background-color: var(--primary-yellow);
+  color: #000000;
+  border-color: #000000;
+  box-shadow: var(--shadow-md);
+  transform: translate(-1px, -1px);
+}
+body.dark-mode .desktop-nav-link.active {
+  color: #000000;
+  border-color: #FFFFFF;
+}
+
+.header-controls {
+  display: flex;
+  gap: 0.75rem;
+}
+
+/* Hide header nav links and bottom bar by default unless logged-in */
+body:not(.logged-in) .desktop-nav,
+body:not(.logged-in) .mobile-only-nav {
+  display: none !important;
+}
+
+@media (max-width: 767px) {
+  .site-header {
+    padding: 0.75rem 1rem;
+  }
+  
+  .desktop-nav {
+    display: none !important;
+  }
+  
+  .header-controls #resetStateBtn {
+    display: none !important; /* Hide reset btn on mobile to save space */
+  }
+}
