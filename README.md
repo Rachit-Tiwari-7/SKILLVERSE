@@ -1,10 +1,14 @@
 # SKILLVERSE — Student Skill Exchange Platform
 
-![Version](https://img.shields.io/badge/version-1.0.0-blue?style=flat-square&labelColor=000&color=FFD028)
-![Build](https://img.shields.io/badge/build-passing-brightgreen?style=flat-square&labelColor=000&color=00AD6F)
-![Framework](https://img.shields.io/badge/framework-Vite-2E62F6?style=flat-square&labelColor=000)
-![Design](https://img.shields.io/badge/design-Neobrutalism-FF4A4A?style=flat-square&labelColor=000)
-![License](https://img.shields.io/badge/license-AC--DC-000?style=flat-square&labelColor=000&color=FFD028)
+![Version](https://img.shields.io/badge/Version-1.0.0-FFD028?style=for-the-badge&labelColor=000000&logo=semver)
+![Status](https://img.shields.io/badge/Status-Active-00AD6F?style=for-the-badge&labelColor=000000&logo=vercel)
+![Vite](https://img.shields.io/badge/Vite-5.4-646CFF?style=for-the-badge&labelColor=000000&logo=vite)
+![JavaScript](https://img.shields.io/badge/JavaScript-ES2024-F7DF1E?style=for-the-badge&labelColor=000000&logo=javascript)
+![HTML](https://img.shields.io/badge/HTML-5-E34F26?style=for-the-badge&labelColor=000000&logo=html5)
+![CSS](https://img.shields.io/badge/CSS-3-1572B6?style=for-the-badge&labelColor=000000&logo=css3)
+![Groq](https://img.shields.io/badge/Groq-API-FF6B6B?style=for-the-badge&labelColor=000000&logo=groq)
+![Lenis](https://img.shields.io/badge/Lenis-Smooth_Scroll-FFD028?style=for-the-badge&labelColor=000000)
+![License](https://img.shields.io/badge/License-AC--DC-000000?style=for-the-badge&labelColor=FFD028&logo=openaccess)
 
 ---
 
