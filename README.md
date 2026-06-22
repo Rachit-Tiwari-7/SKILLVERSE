@@ -8,7 +8,7 @@
 ![CSS](https://img.shields.io/badge/CSS-3-1572B6?style=for-the-badge&labelColor=000000&logo=css3)
 ![Groq](https://img.shields.io/badge/Groq-API-FF6B6B?style=for-the-badge&labelColor=000000&logo=groq)
 ![Lenis](https://img.shields.io/badge/Lenis-Smooth_Scroll-FFD028?style=for-the-badge&labelColor=000000)
-![License](https://img.shields.io/badge/License-AC--DC-000000?style=for-the-badge&labelColor=FFD028&logo=openaccess)
+[![License](https://img.shields.io/badge/License-AC--DC-000000?style=for-the-badge&labelColor=FFD028&logo=openaccess)](LICENSE)
 
 ---
 
@@ -322,33 +322,84 @@ npm run preview  # preview production build
 
 ---
 
+## Contributing
+
+### Development Timeline
+
+```mermaid
+gantt
+    title SKILLVERSE Development Timeline
+    dateFormat  YYYY-MM-DD
+    axisFormat  %b %d
+
+    section Planning
+    UI/UX Mockups & PDF Design      :done, 2026-05-20, 5d
+    Architecture Planning           :done, 2026-05-24, 3d
+
+    section Frontend
+    Vite + Project Scaffold         :done, 2026-05-27, 2d
+    Component Screens (10 views)    :done, 2026-05-29, 5d
+    CSS Neobrutalist Design System  :done, 2026-06-02, 3d
+    Reactive State Management       :done, 2026-06-05, 2d
+    SPA Router Implementation       :done, 2026-06-07, 2d
+
+    section Features
+    Match Engine & Filters          :done, 2026-06-09, 3d
+    Waiting Room Timer & Controls   :done, 2026-06-11, 2d
+    Chat System & Messaging         :done, 2026-06-13, 3d
+    AI Chatbot (Groq Integration)   :done, 2026-06-16, 3d
+    Theme Toggle & Color Sandbox    :done, 2026-06-19, 2d
+
+    section Polish
+    Responsive Layout & Navigation  :done, 2026-06-21, 2d
+    README & Documentation          :done, 2026-06-22, 1d
+    Final Review & Submission       :done, 2026-06-22, 1d
+```
+
+### Contributors
+
+| Avatar | Name | Role | Contributions |
+|---|---|---|---|
+| 👤 | **Rachit Tiwari** | Lead Developer | Architecture, State Management, Router, Chat System, AI Integration |
+| 👤 | **Mausam Kar** | Frontend Developer | Component Screens, CSS Design System, Match Engine, Timer |
+| 👤 | **Shaikh Mohammad Warsi** | UI/UX Developer | Login, Profile, Edit Profile, Proposal, Status Screens |
+| 👤 | **Jiya Jaiswal** | Frontend Developer | Home Dashboard, Messages, Waiting Room, Responsive Layout |
+
+### Contribution Graph
+
+```mermaid
+gitGraph
+    commit id: "init" tag: "v0.1"
+    branch dev
+    checkout dev
+    commit id: "scaffold" tag: "vite-setup"
+    commit id: "login-screen"
+    commit id: "home-dashboard"
+    commit id: "neobrutalist-css"
+    commit id: "state-proxy"
+    checkout main
+    merge dev tag: "v0.2"
+    checkout dev
+    commit id: "router-spa"
+    commit id: "match-engine"
+    commit id: "waiting-room"
+    commit id: "chat-system"
+    checkout main
+    merge dev tag: "v0.5"
+    checkout dev
+    commit id: "ai-chatbot"
+    commit id: "theme-toggle"
+    commit id: "responsive-nav"
+    checkout main
+    merge dev tag: "v1.0"
+    commit id: "readme-docs" tag: "final"
+```
+
+---
+
 ## License
 
-### AC-DC Academic License
-
-Copyright &copy; 2026 **Team AC-DC**
-
-All rights reserved. This project is developed solely for **academic evaluation purposes** as part of the curriculum at **VIT Bhopal University**.
-
-**Permissions:**
-- Viewing and evaluating the source code by authorized faculty and evaluators
-- Academic reference and study
-
-**Restrictions:**
-- No commercial use, distribution, or publication without prior written consent from the team
-- No reproduction or redistribution of the codebase, in whole or in part, for any purpose outside academic evaluation
-- No removal or alteration of this license notice
-
-**Attribution:**
-
-This project — **SKILLVERSE Student Skill Exchange Platform** — is the original work of:
-
-| Name | Role |
-|---|---|
-| **Rachit Tiwari** | Developer |
-| **Mausam Kar** | Developer |
-| **Shaikh Mohammad Warsi** | Developer |
-| **Jiya Jaiswal** | Developer |
+This project is licensed under the **AC-DC Academic License**. See the [LICENSE](LICENSE) file for details.
 
 *Team AC-DC — VIT Bhopal University*
 
