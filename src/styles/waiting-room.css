@@ -125,6 +125,7 @@ body.dark-mode .waiting-subtitle {
   left: 0;
   width: 100vw;
   height: 100vh;
+  height: 100dvh;
   background-color: #0f172a;
   background-image: radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px);
   background-size: 24px 24px;
@@ -374,13 +375,21 @@ body.dark-mode .star-btn {
     padding: 0.5rem 0.75rem 1rem 0.75rem;
   }
   .call-actions-row {
-    gap: 0.5rem;
+    gap: 0.4rem;
   }
   .call-actions-row button {
     flex: 1;
-    min-width: 80px;
-    font-size: 0.75rem;
-    padding: 0.5rem;
+    min-width: 70px;
+    font-size: 0.7rem;
+    padding: 0.4rem 0.25rem;
+  }
+  .video-controls-row {
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+  .video-controls-row button {
+    font-size: 0.8rem;
+    padding: 0.55rem;
   }
 }
 

@@ -479,6 +479,16 @@ body.dark-mode .neobrutal-btn.black {
     font-size: 0.95rem;
     margin-bottom: 0.75rem;
   }
+
+  /* Prevent iOS zoom on focus */
+  input, select, textarea,
+  .neobrutal-input,
+  .neobrutal-select,
+  .chat-text-input,
+  .chat-search-input,
+  .ai-chat-input-area input {
+    font-size: 16px !important;
+  }
 }
 
 /* Very small phones (< 380px) */
