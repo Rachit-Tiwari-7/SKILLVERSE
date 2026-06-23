@@ -23,7 +23,9 @@ export const state = {
       availableForMatches: true
     },
     rating: '4.9',
-    streak: '14'
+    streak: '14',
+    xp: 720,
+    level: 4
   },
 
   // Waiting Room State

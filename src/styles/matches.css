@@ -66,6 +66,38 @@
   box-shadow: var(--shadow-sm);
   background-color: var(--white);
   position: relative;
+  touch-action: none;
+  user-select: none;
+}
+
+/* Drag Stamps styling */
+.swipe-stamp {
+  position: absolute;
+  top: 20px;
+  border: var(--border-thick);
+  padding: 0.3rem 0.8rem;
+  font-family: var(--font-header);
+  font-weight: 900;
+  font-size: 1.35rem;
+  text-transform: uppercase;
+  border-radius: 0;
+  box-shadow: 2.5px 2.5px 0 var(--black);
+  z-index: 100;
+  pointer-events: none;
+  background-color: var(--white);
+  transition: transform 0.15s ease, opacity 0.1s ease;
+}
+
+.like-stamp {
+  right: 20px;
+  color: var(--primary-green);
+  border-color: var(--primary-green);
+}
+
+.nope-stamp {
+  left: 20px;
+  color: var(--primary-red);
+  border-color: var(--primary-red);
 }
 
 /* Card dismissed/liked states */

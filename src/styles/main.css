@@ -223,7 +223,7 @@ body.dark-mode .skeleton {
 }
 
 .neobrutal-btn:hover {
-  transform: translate(-2px, -2px);
+  transform: translate(-3px, -3px) skewX(-2deg);
   box-shadow: var(--shadow-md);
 }
 

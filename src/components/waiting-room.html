@@ -19,15 +19,12 @@
     <div class="video-status-overlay">LOCAL STREAM</div>
     
     <div id="waiting-camera-off" class="camera-off-indicator">
-      <div class="camera-off-icon"></div>
+      <div class="camera-off-icon">👤</div>
       <div class="camera-off-text">Camera Off</div>
     </div>
     
-    <!-- Animated canvas pattern playing when camera is ON -->
-    <div id="waiting-sim-webcam" class="simulated-webcam" style="background: radial-gradient(circle, #334155, #0f172a); display:none; flex-direction:column; justify-content:center; align-items:center;">
-      <div class="pulse-dot" style="width: 14px; height: 14px; background-color: var(--primary-green); margin-bottom: 10px;"></div>
-      <span style="color: #fff; font-size: 0.75rem; font-weight: 800; font-family: var(--font-header);">TRANSMITTING VIDEO...</span>
-    </div>
+    <!-- Animated canvas playing when camera is ON -->
+    <canvas id="waiting-sim-webcam-canvas" class="simulated-webcam-canvas" style="display:none; width: 100%; height: 100%; object-fit: cover;"></canvas>
     
     <div class="video-status-overlay" style="top: auto; bottom: 10px; right: 10px; left: auto; background-color: var(--primary-red);" id="mic-status-label">AUDIO MUTED</div>
   </div>
@@ -38,4 +35,70 @@
   </div>
   
   <button type="button" id="join-session-btn" class="neobrutal-btn blue">Join Session</button>
+</div>
+
+<!-- Full Screen Active Call Dashboard Overlay -->
+<div id="active-call-overlay" class="active-call-overlay" style="display:none;">
+  <div class="call-overlay-header">
+    <div class="call-header-left">
+      <span class="call-live-indicator"><span class="live-dot"></span> LIVE CONNECTION</span>
+      <h3 class="call-header-title">React Hooks with Alex Chen</h3>
+    </div>
+    <div class="call-duration" id="call-duration-timer">00:00</div>
+  </div>
+  
+  <!-- Video Feeds Section -->
+  <div class="call-video-grid" id="call-video-grid">
+    <!-- Local camera feed box -->
+    <div class="video-box local" id="call-video-box-local">
+      <canvas id="call-canvas-local"></canvas>
+      <div class="video-box-label">YOU (MUTED)</div>
+    </div>
+    
+    <!-- Remote camera feed box -->
+    <div class="video-box remote" id="call-video-box-remote">
+      <canvas id="call-canvas-remote"></canvas>
+      <div class="video-box-label">ALEX CHEN (ONLINE)</div>
+    </div>
+    
+    <!-- Screen share box (hidden by default) -->
+    <div class="video-box screenshare" id="call-video-box-screenshare" style="display: none;">
+      <canvas id="call-canvas-screenshare"></canvas>
+      <div class="video-box-label">ALEX'S FIGMA BLUEPRINT</div>
+    </div>
+  </div>
+  
+  <div class="call-bottom-container">
+    <div class="call-actions-row">
+      <button type="button" id="call-toggle-mic" class="neobrutal-btn red">Muted</button>
+      <button type="button" id="call-toggle-video" class="neobrutal-btn yellow">Video On</button>
+      <button type="button" id="call-toggle-share" class="neobrutal-btn white">Share Screen</button>
+      <button type="button" id="call-hang-up" class="neobrutal-btn red" style="color: #ffffff;">End Call</button>
+    </div>
+  </div>
+</div>
+
+<!-- Session Feedback & Review Modal -->
+<div id="call-feedback-modal" class="neobrutal-modal" style="display:none;">
+  <div class="modal-content neobrutal-panel">
+    <h3 class="modal-title">Session Complete! 🎉</h3>
+    <p class="modal-subtitle">How was your learning exchange with <strong>Alex Chen</strong>?</p>
+    
+    <!-- Stars rating -->
+    <div class="rating-stars-container" id="rating-stars-container">
+      <span class="star-btn" data-rating="1">★</span>
+      <span class="star-btn" data-rating="2">★</span>
+      <span class="star-btn" data-rating="3">★</span>
+      <span class="star-btn" data-rating="4">★</span>
+      <span class="star-btn" data-rating="5">★</span>
+    </div>
+    
+    <!-- Feedback text -->
+    <div class="neobrutal-input-group">
+      <label class="neobrutal-label" for="feedback-text">Leave a quick review</label>
+      <textarea class="neobrutal-input" id="feedback-text" rows="2" style="resize:none;" placeholder="Alex was amazing at explaining React Hooks..."></textarea>
+    </div>
+    
+    <button type="button" id="submit-feedback-btn" class="neobrutal-btn blue">Submit Review & Earn XP</button>
+  </div>
 </div>

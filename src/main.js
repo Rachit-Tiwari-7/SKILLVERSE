@@ -20,6 +20,8 @@ import { navigate, goBack, renderChatsList, renderChatRoom, setSwitchState } fro
 import { sendChatMessage } from './chatbot.js';
 import { startTimer } from './timer.js';
 import { initAiAssistant } from './ai-assistant.js';
+import { startWebcamSim, stopWebcamSim } from './webcam-sim.js';
+import { triggerConfetti, triggerSuccessParticles, triggerSparkles } from './effects.js';
 
 // Import Component HTML Files as raw strings (Vite feature)
 import loginHtml from './components/login.html?raw';
@@ -216,7 +218,184 @@ function bindEvents() {
   if (rtcJoinBtn) {
     rtcJoinBtn.addEventListener('click', () => {
       addLog('Session initiated. Simulating connection to Peer WebRTC channel...');
-      alert('Connecting to Alex Chen...\nWebRTC Call simulation running.');
+      
+      const overlay = document.getElementById('active-call-overlay');
+      if (!overlay) return;
+
+      const lobbyCanvas = document.getElementById('waiting-sim-webcam-canvas');
+      if (lobbyCanvas) stopWebcamSim(lobbyCanvas);
+
+      overlay.style.display = 'flex';
+      
+      let micMuted = state.waitingRoom.muted;
+      let videoOn = state.waitingRoom.cameraOn;
+      let isSharing = false;
+      let callTimerSeconds = 0;
+      
+      const callDurationLabel = document.getElementById('call-duration-timer');
+      const formatCallTime = (sec) => {
+        const m = Math.floor(sec / 60);
+        const s = sec % 60;
+        return `${m < 10 ? '0' : ''}${m}:${s < 10 ? '0' : ''}${s}`;
+      };
+      
+      const callTimerInterval = setInterval(() => {
+        callTimerSeconds++;
+        if (callDurationLabel) callDurationLabel.textContent = formatCallTime(callTimerSeconds);
+      }, 1000);
+
+      const micBtn = document.getElementById('call-toggle-mic');
+      const videoBtn = document.getElementById('call-toggle-video');
+      const shareBtn = document.getElementById('call-toggle-share');
+      const hangUpBtn = document.getElementById('call-hang-up');
+      
+      const localBox = document.getElementById('call-video-box-local');
+      const localCanvas = document.getElementById('call-canvas-local');
+      const remoteCanvas = document.getElementById('call-canvas-remote');
+      const screenshareBox = document.getElementById('call-video-box-screenshare');
+      const screenshareCanvas = document.getElementById('call-canvas-screenshare');
+      const videoGrid = document.getElementById('call-video-grid');
+
+      const updateLocalFeed = () => {
+        const stateObj = { muted: micMuted, cameraOn: videoOn };
+        const label = localBox.querySelector('.video-box-label');
+        if (label) label.textContent = `YOU (${videoOn ? (micMuted ? 'MUTED' : 'LIVE') : 'CAMERA OFF'})`;
+        
+        if (videoOn && localCanvas) {
+          localCanvas.style.display = 'block';
+          startWebcamSim(localCanvas, 'local', stateObj);
+        } else {
+          if (localCanvas) {
+            localCanvas.style.display = 'none';
+            stopWebcamSim(localCanvas);
+          }
+        }
+      };
+
+      if (micBtn) {
+        micBtn.className = `neobrutal-btn ${micMuted ? 'red' : 'green'}`;
+        micBtn.textContent = micMuted ? 'Muted' : 'Unmuted';
+      }
+      if (videoBtn) {
+        videoBtn.className = `neobrutal-btn ${videoOn ? 'yellow' : 'white'}`;
+        videoBtn.textContent = videoOn ? 'Video On' : 'Video Off';
+      }
+      if (shareBtn) {
+        shareBtn.className = 'neobrutal-btn white';
+        shareBtn.textContent = 'Share Screen';
+      }
+
+      updateLocalFeed();
+      if (remoteCanvas) {
+        startWebcamSim(remoteCanvas, 'remote');
+      }
+
+      const onMicClick = () => {
+        micMuted = !micMuted;
+        if (micBtn) {
+          micBtn.className = `neobrutal-btn ${micMuted ? 'red' : 'green'}`;
+          micBtn.textContent = micMuted ? 'Muted' : 'Unmuted';
+        }
+        updateLocalFeed();
+        addLog(`In-Call Mic toggled: ${micMuted ? 'MUTED' : 'ACTIVE'}`);
+      };
+      
+      const onVideoClick = () => {
+        videoOn = !videoOn;
+        if (videoBtn) {
+          videoBtn.className = `neobrutal-btn ${videoOn ? 'yellow' : 'white'}`;
+          videoBtn.textContent = videoOn ? 'Video On' : 'Video Off';
+        }
+        updateLocalFeed();
+        addLog(`In-Call Camera toggled: ${videoOn ? 'ON' : 'OFF'}`);
+      };
+
+      const onShareClick = () => {
+        isSharing = !isSharing;
+        if (shareBtn) {
+          shareBtn.className = `neobrutal-btn ${isSharing ? 'yellow' : 'white'}`;
+          shareBtn.textContent = isSharing ? 'Sharing' : 'Share Screen';
+        }
+        
+        if (isSharing) {
+          if (screenshareBox) screenshareBox.style.display = 'flex';
+          if (videoGrid) videoGrid.classList.add('sharing');
+          if (screenshareCanvas) startWebcamSim(screenshareCanvas, 'screenshare');
+          addLog('Screen share started: Figma Sandbox');
+        } else {
+          if (screenshareBox) screenshareBox.style.display = 'none';
+          if (videoGrid) videoGrid.classList.remove('sharing');
+          if (screenshareCanvas) stopWebcamSim(screenshareCanvas);
+          addLog('Screen share stopped');
+        }
+      };
+
+      const onHangUpClick = () => {
+        clearInterval(callTimerInterval);
+        
+        if (localCanvas) stopWebcamSim(localCanvas);
+        if (remoteCanvas) stopWebcamSim(remoteCanvas);
+        if (screenshareCanvas) stopWebcamSim(screenshareCanvas);
+
+        overlay.style.display = 'none';
+        addLog('Session call terminated.');
+
+        const feedbackModal = document.getElementById('call-feedback-modal');
+        if (feedbackModal) {
+          feedbackModal.style.display = 'flex';
+        }
+
+        micBtn.removeEventListener('click', onMicClick);
+        videoBtn.removeEventListener('click', onVideoClick);
+        shareBtn.removeEventListener('click', onShareClick);
+        hangUpBtn.removeEventListener('click', onHangUpClick);
+      };
+
+      if (micBtn) micBtn.addEventListener('click', onMicClick);
+      if (videoBtn) videoBtn.addEventListener('click', onVideoClick);
+      if (shareBtn) shareBtn.addEventListener('click', onShareClick);
+      if (hangUpBtn) hangUpBtn.addEventListener('click', onHangUpClick);
+    });
+  }
+
+  // --- Rating Star Selection inside Call Feedback ---
+  const starsContainer = document.getElementById('rating-stars-container');
+  let selectedRating = 5;
+  if (starsContainer) {
+    starsContainer.addEventListener('click', (e) => {
+      const star = e.target.closest('.star-btn');
+      if (star) {
+        selectedRating = parseInt(star.dataset.rating, 10);
+        starsContainer.querySelectorAll('.star-btn').forEach(btn => {
+          const r = parseInt(btn.dataset.rating, 10);
+          btn.classList.toggle('active', r <= selectedRating);
+        });
+        triggerSparkles(e.clientX, e.clientY);
+      }
+    });
+  }
+
+  // --- Submit Feedback ---
+  const submitFeedbackBtn = document.getElementById('submit-feedback-btn');
+  if (submitFeedbackBtn) {
+    submitFeedbackBtn.addEventListener('click', () => {
+      const feedbackModal = document.getElementById('call-feedback-modal');
+      if (feedbackModal) feedbackModal.style.display = 'none';
+      
+      const comment = document.getElementById('feedback-text').value;
+      addLog(`Submitted review for Alex Chen: rating ${selectedRating} Stars, feedback: "${comment}"`);
+      awardXp(150);
+    });
+  }
+
+  // --- Level Up Modal Dismiss ---
+  const claimRewardsBtn = document.getElementById('claim-rewards-btn');
+  if (claimRewardsBtn) {
+    claimRewardsBtn.addEventListener('click', () => {
+      const levelUpModal = document.getElementById('level-up-modal');
+      if (levelUpModal) levelUpModal.style.display = 'none';
+      triggerConfetti();
+      navigate('home');
     });
   }
 
@@ -377,6 +556,32 @@ function bindEvents() {
   const searchInput = document.getElementById('chat-search-input');
   if (searchInput) {
     searchInput.addEventListener('input', renderChatsList);
+  }
+}
+
+function awardXp(amount) {
+  state.user.xp += amount;
+  addLog(`Gained <strong>+${amount} XP</strong>! Current XP: ${state.user.xp}/1000`);
+  
+  if (state.user.xp >= 1000) {
+    state.user.xp -= 1000;
+    state.user.level += 1;
+    addLog(`🎉 LEVEL UP! User reached Level ${state.user.level}`);
+    
+    setTimeout(() => {
+      const modal = document.getElementById('level-up-modal');
+      if (modal) {
+        const levelVal = document.getElementById('modal-level-val');
+        const levelMetric = document.getElementById('modal-level-metric');
+        if (levelVal) levelVal.textContent = state.user.level;
+        if (levelMetric) levelMetric.textContent = state.user.level;
+        modal.style.display = 'flex';
+        triggerSuccessParticles();
+      }
+    }, 600);
+  } else {
+    triggerSuccessParticles();
+    navigate('home');
   }
 }
 

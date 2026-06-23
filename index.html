@@ -74,8 +74,8 @@
 
   <!-- AI Chatbot Widget -->
   <div class="ai-chatbot-widget" id="ai-chatbot-widget">
-    <!-- Chat Window -->
-    <div class="ai-chat-window" id="ai-chat-window" style="display: none;">
+    <!-- Chat Window (handled via classes) -->
+    <div class="ai-chat-window" id="ai-chat-window">
       <div class="ai-chat-header">
         <div class="ai-chat-title">
           <span class="ai-icon">🤖</span>
@@ -87,6 +87,12 @@
         <div class="ai-msg ai-msg-bot">
           <div class="ai-bubble">Hello! I'm the Skillverse AI. How can I help you find matches or navigate the platform today?</div>
         </div>
+      </div>
+      <!-- Suggestion Chips -->
+      <div class="ai-suggestion-chips" id="ai-suggestion-chips">
+        <button class="ai-chip" data-query="How do I find matches?">🔍 Match Info</button>
+        <button class="ai-chip" data-query="How does the waiting room work?">⏳ Call Lobby</button>
+        <button class="ai-chip" data-query="How do I get XP?">⚡ Earn XP</button>
       </div>
       <div class="ai-chat-input-area">
         <input type="text" id="ai-chat-input" placeholder="Ask something...">

@@ -30,9 +30,14 @@
   background-color: var(--primary-red);
   border-radius: 50%;
   border: 2px solid #000000;
+  transition: transform 0.2s ease;
 }
 body.dark-mode .logo-circle {
   border: 2px solid #FFFFFF;
+}
+
+.logo-zone:hover .logo-circle {
+  animation: logoCircleBounce 0.5s infinite alternate ease-in-out;
 }
 
 .logo-square {
@@ -40,9 +45,24 @@ body.dark-mode .logo-circle {
   height: 18px;
   background-color: var(--primary-blue);
   border: 2px solid #000000;
+  transition: transform 0.2s ease;
 }
 body.dark-mode .logo-square {
   border: 2px solid #FFFFFF;
+}
+
+.logo-zone:hover .logo-square {
+  animation: logoSquareSpin 0.8s infinite linear;
+}
+
+@keyframes logoCircleBounce {
+  from { transform: translateY(0); }
+  to { transform: translateY(-5px); }
+}
+
+@keyframes logoSquareSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
 .logo-title {

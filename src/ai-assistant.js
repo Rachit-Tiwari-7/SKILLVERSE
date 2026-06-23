@@ -8,18 +8,33 @@ export function initAiAssistant() {
 
   if (!fabBtn || !chatWindow) return;
 
-  // Toggle chat window
+  // Toggle chat window (using classes for bounce transitions)
   fabBtn.addEventListener('click', () => {
-    chatWindow.style.display = chatWindow.style.display === 'none' ? 'flex' : 'none';
-    if (chatWindow.style.display === 'flex') {
+    chatWindow.classList.toggle('open');
+    if (chatWindow.classList.contains('open')) {
       inputEl.focus();
       scrollToBottom();
     }
   });
 
   closeBtn.addEventListener('click', () => {
-    chatWindow.style.display = 'none';
+    chatWindow.classList.remove('open');
   });
+
+  // Handle Suggestion Chips clicks
+  const chipsContainer = document.getElementById('ai-suggestion-chips');
+  if (chipsContainer) {
+    chipsContainer.addEventListener('click', (e) => {
+      const chip = e.target.closest('.ai-chip');
+      if (chip) {
+        const query = chip.dataset.query;
+        if (query) {
+          inputEl.value = query;
+          handleSend();
+        }
+      }
+    });
+  }
 
   // Handle sending messages
   const handleSend = async () => {
@@ -34,13 +49,22 @@ export function initAiAssistant() {
     const typingId = showTypingIndicator();
     
     try {
-      const response = await fetchGroqResponse(text);
+      const apiKey = import.meta.env.VITE_GROQ_API_KEY || '';
+      let responseText = '';
+      
+      if (!apiKey) {
+        // Fallback directly if no key is set
+        responseText = getLocalFallbackResponse(text);
+      } else {
+        responseText = await fetchGroqResponse(text);
+      }
+      
       removeTypingIndicator(typingId);
-      appendMessage(response, 'bot');
+      appendMessage(responseText, 'bot');
     } catch (e) {
-      console.error(e);
+      console.error('Groq AI API failed, using offline fallback:', e);
       removeTypingIndicator(typingId);
-      appendMessage("Sorry, I'm having trouble connecting to my neural network right now.", 'bot');
+      appendMessage(getLocalFallbackResponse(text), 'bot');
     }
   };
 
@@ -123,5 +147,34 @@ Keep your answers brief (1-3 sentences max), friendly, and strictly contextual t
 
     const data = await response.json();
     return data.choices[0].message.content;
+  }
+
+  // --- LOCAL OFFLINE KEYWORD RESPONDER FALLBACK ---
+  function getLocalFallbackResponse(userText) {
+    const text = userText.toLowerCase();
+    
+    if (text.includes('match') || text.includes('find') || text.includes('peer')) {
+      return "To find skill exchange matches, head to the **Matches** screen from the navbar! You can filter peers by department (CS, Design, Business) and click **Propose Exchange** or swipe/like them.";
+    }
+    if (text.includes('chat') || text.includes('message') || text.includes('talk')) {
+      return "Once a proposal is approved, coordinate session timings with peers inside the **Chats** directory. Select a student's name from the list to start messaging or access call lobbys!";
+    }
+    if (text.includes('call') || text.includes('waiting') || text.includes('lobby') || text.includes('video')) {
+      return "To start a live session, go to **Home** and click **🎥 Join Call** under 'Upcoming Sessions'. Make sure to test your video and audio in the Call Lobby first, then click Join Session to launch the call dashboard!";
+    }
+    if (text.includes('xp') || text.includes('level') || text.includes('reward') || text.includes('rank')) {
+      return "You earn **XP** by completing video calls and rating your peers! Accumulate 1000 XP to **Level Up**, which grants you new titles and boosts your profile visual appeal.";
+    }
+    if (text.includes('streak')) {
+      return "Your **Streak** increases every consecutive day you engage in skill exchanges. Maintain your streak to climb the Top Skill Sharers leaderboard on the dashboard!";
+    }
+    if (text.includes('hi') || text.includes('hello') || text.includes('hey') || text.includes('assist')) {
+      return "Hey there! I am the Skillverse Offline AI. Ask me about matches, live video call rooms, messaging, earning XP, or profile streak levels.";
+    }
+    if (text.includes('help') || text.includes('how')) {
+      return "I can help you navigate this platform! Try asking me: 'how do matches work?', 'how do I join a call?', 'how do I earn XP?', or 'where are my messages?'.";
+    }
+    
+    return "I am the Skillverse AI assistant. I can show you how to find matches, earn XP, chat with other students, or join call lobbys. Try asking: 'how do video calls work?'";
   }
 }
