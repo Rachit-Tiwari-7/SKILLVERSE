@@ -91,3 +91,29 @@
   width: 100%;
   max-width: 320px;
 }
+
+@media (max-width: 767px) {
+  .status-screen {
+    padding: 2.5rem 1.25rem;
+  }
+  .status-title {
+    font-size: 1.85rem;
+  }
+  .status-subtitle {
+    font-size: 0.88rem;
+    margin-bottom: 1.75rem;
+  }
+  .status-icon-circle {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 1.5rem;
+  }
+  .status-icon-check {
+    font-size: 2.25rem;
+  }
+  .status-close-btn {
+    top: 15px;
+    right: 15px;
+    font-size: 1.5rem;
+  }
+}

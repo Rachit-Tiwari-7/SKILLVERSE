@@ -381,6 +381,7 @@ export function initCardSwiping() {
     let currentX = 0;
     let currentY = 0;
     let isDragging = false;
+    let isSwipeGesture = null; // null = undecided, true = swipe, false = scroll
     
     const likeStamp = card.querySelector('.like-stamp');
     const nopeStamp = card.querySelector('.nope-stamp');
@@ -389,6 +390,7 @@ export function initCardSwiping() {
       if (e.target.closest('button')) return;
 
       isDragging = true;
+      isSwipeGesture = null;
       startX = e.clientX || e.touches[0].clientX;
       startY = e.clientY || e.touches[0].clientY;
       card.style.transition = 'none';
@@ -409,6 +411,30 @@ export function initCardSwiping() {
       
       currentX = clientX - startX;
       currentY = clientY - startY;
+
+      if (isSwipeGesture === null) {
+        const threshold = 10;
+        const absX = Math.abs(currentX);
+        const absY = Math.abs(currentY);
+        if (absX > threshold || absY > threshold) {
+          if (absX > absY) {
+            isSwipeGesture = true;
+          } else {
+            isSwipeGesture = false;
+            // Cancel dragging/gestures, let browser scroll naturally
+            isDragging = false;
+            card.style.cursor = 'grab';
+            card.style.zIndex = '';
+            window.removeEventListener('mousemove', onMove);
+            window.removeEventListener('mouseup', onEnd);
+            window.removeEventListener('touchmove', onMove);
+            window.removeEventListener('touchend', onEnd);
+            return;
+          }
+        } else {
+          return;
+        }
+      }
       
       const rotate = currentX * 0.08;
       card.style.transform = `translate(${currentX}px, ${currentY}px) rotate(${rotate}deg)`;
